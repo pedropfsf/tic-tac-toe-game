@@ -1,11 +1,21 @@
+import { SvgProps } from 'react-native-svg';
+import { TextAlternative } from './styles';
 
 type LogoProps = {
-  src: string;
+  Src: React.FC<SvgProps>;
   alt: string;
 };
 
-function Logo({ src, alt }: LogoProps) {
-  return 0;
+function Logo({ Src, alt }: LogoProps) {
+  if(Src) {
+    return <Src/>;
+  } 
+  
+  return (
+    <TextAlternative>
+      { alt }
+    </TextAlternative>
+  );
 }
 
 export default Logo;

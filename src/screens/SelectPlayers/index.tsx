@@ -1,23 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Container } from './styles';
+import { Logo } from '../../components';
+import { ImageIconLogo } from '../../assets';
 
 function SelectPlayers() {
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>SelectPlayers</Text>
-    </View>
+    <Container >
+      <Logo
+        Src={ImageIconLogo}
+        alt="Logo do aplicativo"
+      />
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  }
-});
 
 export default SelectPlayers;
