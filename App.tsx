@@ -18,7 +18,7 @@ const NativeStack = createNativeStackNavigator<RootNativeStackParamsList>();
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
         <NativeStack.Navigator
           screenOptions={{

@@ -1,6 +1,6 @@
 const colors = {
-  playerX: '#46A6FF',
-  playerO: '#FF465C',
+  playerX: '#FF465C',
+  playerO: '#46A6FF',
   detach: '#6246FF',
   background: '#060029',
   secundary: '#E8E5F9',
