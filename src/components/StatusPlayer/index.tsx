@@ -1,4 +1,6 @@
-import { Area } from './styles';
+import { Area, Box } from './styles';
+
+import Text from '../Text';
 
 type StatusPlayerProps = {
   namePlayer: string;
@@ -17,7 +19,14 @@ function StatusPlayer({
     <Area
       color={color}
     >
-
+      <Box
+        line={{
+          top: 0,
+        }}
+        color={color}
+      >
+        <Text color={color}>{ namePlayer }</Text>
+      </Box>
     </Area>
   )
 }

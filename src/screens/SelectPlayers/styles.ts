@@ -1,10 +1,8 @@
-import Constants from 'expo-constants';
 import styled from 'styled-components/native';
 
 import calculateWidthPhone from '../../utils/calculateWidthPhone';
+import calculateDistanceBarHeight from '../../utils/calculateDistanceBarHeight';
 import colors from '../../styles/colors';
-
-const barHeightSpace = Constants.statusBarHeight;
 
 
 export const AreaScreen = styled.View`
@@ -14,22 +12,7 @@ export const AreaScreen = styled.View`
 
   background-color: ${colors.background};
 
-  padding-top: ${barHeightSpace + 24}px;
-`;
-
-type TextProps = {
-  fontSize?: string | number;
-}
-
-export const Text = styled.Text<TextProps>`
-  font-size: ${props => props.fontSize ? props.fontSize : 24}px;
-  font-weight: bold;
-  
-  text-align: center;
-
-  margin: 0 24px;
-
-  color: ${colors.secundary};
+  padding-top: ${calculateDistanceBarHeight(24)}px;
 `;
 
 export const Form = styled.View`

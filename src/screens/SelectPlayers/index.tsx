@@ -2,13 +2,12 @@ import {
   Button, 
   AreaScreen, 
   Input, 
-  Form, 
-  Text 
+  Form 
 } from './styles';
 
 import colors from '../../styles/colors';
 import convertOpacityColor from '../../utils/convertOpacityColor';
-import { Logo } from '../../components';
+import { Logo, Text } from '../../components';
 import { ImageIconLogo } from '../../assets';
 
 function SelectPlayers() {
