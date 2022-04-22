@@ -1,7 +1,7 @@
 import { Span, SpanProps } from "./styles";
 
 type AditionalProps = {
-  children: string;
+  children: string | string[];
 }
 
 type TextProps = AditionalProps & SpanProps

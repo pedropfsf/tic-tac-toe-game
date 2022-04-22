@@ -3,6 +3,7 @@ import { AreaScreen, Container } from './styles';
 import { StatusPlayer } from '../../components';
 import { ImageIconLogo } from '../../assets';
 import Logo from '../../components/Logo';
+import colors from '../../styles/colors';
 
 function Home() {
   return (
@@ -15,8 +16,14 @@ function Home() {
         <StatusPlayer
           namePlayer='Pedro'
           quantityVitory={2}
-          typePlayer='player-x'
-          color='red'
+          typePlayer='Jogador X'
+          color={colors.playerX}
+        />
+        <StatusPlayer
+          namePlayer='Tiago'
+          quantityVitory={2}
+          typePlayer='Jogador O'
+          color={colors.playerO}
         />
       </Container>
     </AreaScreen>

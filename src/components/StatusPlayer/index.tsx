@@ -1,10 +1,10 @@
-import { Area, Box } from './styles';
+import { Area, Box, Column } from './styles';
 
 import Text from '../Text';
 
 type StatusPlayerProps = {
   namePlayer: string;
-  typePlayer: 'player-x' | 'player-o'
+  typePlayer: 'Jogador X' | 'Jogador O'
   quantityVitory: number;
   color: string;
 }
@@ -16,17 +16,43 @@ function StatusPlayer({
   color 
 }: StatusPlayerProps) {
   return (
-    <Area
-      color={color}
-    >
-      <Box
-        line={{
-          top: 0,
-        }}
-        color={color}
-      >
-        <Text color={color}>{ namePlayer }</Text>
-      </Box>
+    <Area color={color}>
+      <Column>
+        <Box
+          line={{ right: 2.5 }}
+          color={color}
+        >
+          <Text 
+            color={color}
+            fontSize={24}
+          >
+            { namePlayer }
+          </Text>
+        </Box>
+      </Column>
+      <Column>
+        <Box
+          line={{ bottom: 2.5 }}
+          color={color}
+        >
+          <Text 
+            color={color}
+            fontSize={16}
+          >
+            { typePlayer }
+          </Text>
+        </Box>
+        <Box
+          color={color}
+        >
+          <Text 
+            color={color}
+            fontSize={16}
+          >
+            { String(quantityVitory) } Vitórias
+          </Text>
+        </Box>
+      </Column>
     </Area>
   )
 }
