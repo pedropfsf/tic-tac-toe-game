@@ -1,23 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { AreaScreen, Container } from './styles';
+
+import { StatusPlayer } from '../../components';
+import { ImageIconLogo } from '../../assets';
+import Logo from '../../components/Logo';
 
 function Home() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-    </View>
+    <AreaScreen>
+      <Logo
+        Src={ImageIconLogo}
+        alt="Logo do aplicativo"
+      />
+      <Container>
+        <StatusPlayer
+          namePlayer='Pedro'
+          quantityVitory={2}
+          typePlayer='player-x'
+          color='red'
+        />
+      </Container>
+    </AreaScreen>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  }
-});
 
 export default Home;

@@ -1,5 +1,7 @@
+import StatusPlayer from './StatusPlayer';
 import Logo from './Logo';
 
 export {
-  Logo
+  Logo,
+  StatusPlayer
 }

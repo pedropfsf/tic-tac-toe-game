@@ -1,6 +1,6 @@
 import { 
   Button, 
-  Container, 
+  AreaScreen, 
   Input, 
   Form, 
   Text 
@@ -17,7 +17,7 @@ function SelectPlayers() {
   };
 
   return (
-    <Container>
+    <AreaScreen>
       <Logo
         Src={ImageIconLogo}
         alt="Logo do aplicativo"
@@ -48,7 +48,7 @@ function SelectPlayers() {
           <Text>Criar Partida</Text>
         </Button>
       </Form>
-    </Container>
+    </AreaScreen>
   )
 }
 

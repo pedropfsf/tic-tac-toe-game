@@ -1,14 +1,13 @@
-import { Dimensions } from 'react-native';
 import Constants from 'expo-constants';
 import styled from 'styled-components/native';
 
+import calculateWidthPhone from '../../utils/calculateWidthPhone';
 import colors from '../../styles/colors';
 
-const PhoneWidth = Dimensions.get('window').width;
 const barHeightSpace = Constants.statusBarHeight;
 
 
-export const Container = styled.View`
+export const AreaScreen = styled.View`
   flex: 1;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +37,7 @@ export const Form = styled.View`
   justify-content: space-between;
   align-items: stretch;
 
-  width: ${PhoneWidth - 56}px;
+  width: ${calculateWidthPhone(56)}px;
   
   margin-bottom: 32px;
 `;
