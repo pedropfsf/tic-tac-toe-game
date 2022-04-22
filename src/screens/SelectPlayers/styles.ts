@@ -7,6 +7,7 @@ import colors from '../../styles/colors';
 const PhoneWidth = Dimensions.get('window').width;
 const barHeightSpace = Constants.statusBarHeight;
 
+
 export const Container = styled.View`
   flex: 1;
   justify-content: space-between;
