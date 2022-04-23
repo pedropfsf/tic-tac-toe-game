@@ -9,10 +9,15 @@ type TextProps = AditionalProps & SpanProps
 function Text({ 
   children, 
   fontSize, 
-  color 
+  color,
+  margin
 }: TextProps) {
   return (
-    <Span fontSize={fontSize} color={color}>
+    <Span 
+      fontSize={fontSize} 
+      color={color}
+      margin={margin}
+    >
       { children }
     </Span>
   )

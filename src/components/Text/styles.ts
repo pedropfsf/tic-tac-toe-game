@@ -5,6 +5,7 @@ import colors from '../../styles/colors';
 export type SpanProps = {
   fontSize?: string | number;
   color?: string;
+  margin?: string;
 }
 
 export const Span = styled.Text<SpanProps>`
@@ -13,7 +14,7 @@ export const Span = styled.Text<SpanProps>`
   
   text-align: center;
 
-  margin: 0 24px;
+  margin: ${props => props.margin ? props.margin : '0 24px'};
 
   color: ${props => props.color ? props.color : colors.secundary};
 `;

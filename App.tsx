@@ -24,7 +24,7 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}
-          initialRouteName="SelectPlayers"
+          initialRouteName="Home"
         >
           <NativeStack.Screen name='SelectPlayers' component={SelectPlayers}/>
           <NativeStack.Screen name='Home' component={Home}/>
