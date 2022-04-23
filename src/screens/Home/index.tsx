@@ -10,7 +10,7 @@ import { ImageIconLogo } from '../../assets';
 import Logo from '../../components/Logo';
 import colors from '../../styles/colors';
 
-function Home() {
+function HomeScreen() {
   return (
     <AreaScreen>
       <Logo
@@ -53,4 +53,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default HomeScreen;

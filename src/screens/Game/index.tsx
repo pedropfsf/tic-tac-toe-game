@@ -1,12 +1,14 @@
 import { 
-  AreaScreen, 
-  PanelStatusPlayers 
+  AreaScreen,
+  ColumnGame,
+  PanelGame,
+  PanelStatusPlayers,
 } from './styles';
 
-import { Text } from '../../components';
+import { Text, BoxGame } from '../../components';
 import colors from '../../styles/colors';
 
-function Game() {
+function GameScreen() {
   return (
     <AreaScreen>
       <PanelStatusPlayers>
@@ -31,8 +33,60 @@ function Game() {
       >
         Matheus Ganhouu!!!
       </Text>
+      <PanelGame>
+        <ColumnGame>
+          <BoxGame
+            borderBottom={2}
+            borderRight={2}
+          />
+          <BoxGame
+            borderBottom={2}
+            borderTop={2}
+            borderRight={2}
+          />
+          <BoxGame
+            borderTop={2}
+            borderRight={2}
+          />
+        </ColumnGame>
+        <ColumnGame>
+          <BoxGame
+            borderBottom={2}
+            borderLeft={2}
+            borderRight={2}
+          />
+          <BoxGame
+            borderBottom={2}
+            borderTop={2}
+            borderLeft={2}
+            borderRight={2}
+          />
+          <BoxGame
+            borderTop={2}
+            borderLeft={2}
+            borderRight={2}
+          />
+
+        </ColumnGame>
+        <ColumnGame>
+          <BoxGame
+            borderBottom={2}
+            borderLeft={2}
+          />
+          <BoxGame
+            borderBottom={2}
+            borderTop={2}
+            borderLeft={2}
+          />
+          <BoxGame
+            borderTop={2}
+            borderLeft={2}
+          />
+        
+        </ColumnGame>
+      </PanelGame>
     </AreaScreen>
   )
 }
 
-export default Game;
+export default GameScreen;

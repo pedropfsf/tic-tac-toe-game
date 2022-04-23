@@ -9,7 +9,7 @@ import convertOpacityColor from '../../utils/convertOpacityColor';
 import { Logo, Text, Button } from '../../components';
 import { ImageIconLogo } from '../../assets';
 
-function SelectPlayers() {
+function SelectPlayersScreen() {
   const spaceBelowConfig = {
     below: 16
   };
@@ -50,4 +50,4 @@ function SelectPlayers() {
   )
 }
 
-export default SelectPlayers;
+export default SelectPlayersScreen;

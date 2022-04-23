@@ -19,6 +19,20 @@ export const PanelStatusPlayers = styled.View`
   justify-content: space-around;
   align-items: center;
 
-  border-bottom-width: 2.5px;
+  border-bottom-width: 1px;
   border-bottom-color: ${colors.secundary};
 `;
+
+export const PanelGame = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ColumnGame = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: stretch;
+`;
+
