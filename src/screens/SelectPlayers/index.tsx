@@ -1,14 +1,12 @@
 import { 
-  Button, 
-  Container, 
+  AreaScreen, 
   Input, 
-  Form, 
-  Text 
+  Form 
 } from './styles';
 
 import colors from '../../styles/colors';
 import convertOpacityColor from '../../utils/convertOpacityColor';
-import { Logo } from '../../components';
+import { Logo, Text, Button } from '../../components';
 import { ImageIconLogo } from '../../assets';
 
 function SelectPlayers() {
@@ -17,7 +15,7 @@ function SelectPlayers() {
   };
 
   return (
-    <Container>
+    <AreaScreen>
       <Logo
         Src={ImageIconLogo}
         alt="Logo do aplicativo"
@@ -45,10 +43,10 @@ function SelectPlayers() {
           placeholderTextColor={convertOpacityColor(colors.secundary)}
         />
         <Button>
-          <Text>Criar Partida</Text>
+          Criar Partida
         </Button>
       </Form>
-    </Container>
+    </AreaScreen>
   )
 }
 

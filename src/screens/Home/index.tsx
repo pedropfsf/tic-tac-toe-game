@@ -1,23 +1,56 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { 
+  AreaScreen, 
+  Container, 
+  AreaStatusPlayers, 
+  AreaButtons 
+} from './styles';
+
+import { StatusPlayer, Text, Button } from '../../components';
+import { ImageIconLogo } from '../../assets';
+import Logo from '../../components/Logo';
+import colors from '../../styles/colors';
 
 function Home() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-    </View>
+    <AreaScreen>
+      <Logo
+        Src={ImageIconLogo}
+        alt="Logo do aplicativo"
+      />
+      <Container>
+        <AreaStatusPlayers>
+          <StatusPlayer
+            namePlayer='Pedro'
+            quantityVitory={2}
+            typePlayer='Jogador X'
+            color={colors.playerX}
+          />
+          <Text 
+            color={colors.detach}
+            margin="8px"
+          >VS</Text>
+          <StatusPlayer
+            namePlayer='Tiago'
+            quantityVitory={2}
+            typePlayer='Jogador O'
+            color={colors.playerO}
+          />
+        </AreaStatusPlayers>
+        <AreaButtons>
+          <Button optionsButton={{
+            colorButton: 'transparent',
+            BorderButton: `2.5px solid ${colors.secundary}`,
+            marginBottomButton: 16
+          }}>
+            Voltar
+          </Button>
+          <Button>
+            Vamos começar
+          </Button>
+        </AreaButtons>
+      </Container>
+    </AreaScreen>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  }
-});
 
 export default Home;

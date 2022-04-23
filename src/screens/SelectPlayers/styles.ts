@@ -1,36 +1,18 @@
-import { Dimensions } from 'react-native';
-import Constants from 'expo-constants';
 import styled from 'styled-components/native';
 
+import calculateWidthPhone from '../../utils/calculateWidthPhone';
+import calculateDistanceBarHeight from '../../utils/calculateDistanceBarHeight';
 import colors from '../../styles/colors';
 
-const PhoneWidth = Dimensions.get('window').width;
-const barHeightSpace = Constants.statusBarHeight;
 
-
-export const Container = styled.View`
+export const AreaScreen = styled.View`
   flex: 1;
   justify-content: space-between;
   align-items: center;
 
   background-color: ${colors.background};
 
-  padding-top: ${barHeightSpace + 24}px;
-`;
-
-type TextProps = {
-  fontSize?: string | number;
-}
-
-export const Text = styled.Text<TextProps>`
-  font-size: ${props => props.fontSize ? props.fontSize : 24}px;
-  font-weight: bold;
-  
-  text-align: center;
-
-  margin: 0 24px;
-
-  color: ${colors.secundary};
+  padding-top: ${calculateDistanceBarHeight(24)}px;
 `;
 
 export const Form = styled.View`
@@ -38,7 +20,7 @@ export const Form = styled.View`
   justify-content: space-between;
   align-items: stretch;
 
-  width: ${PhoneWidth - 56}px;
+  width: ${calculateWidthPhone(56)}px;
   
   margin-bottom: 32px;
 `;
@@ -63,21 +45,4 @@ export const Input = styled.TextInput<InputProps>`
   padding-left: 16px;
   margin-top: ${props => props.space?.above ? props.space.above : 0}px;
   margin-bottom: ${props => props.space?.below ? props.space.below : 0}px;
-`;
-
-type ButtonProps = {
-  backgroundColor?: string;
-};
-
-export const Button = styled.View<ButtonProps>`
-  width: 100%;
-  height: 57px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: ${props => props.backgroundColor ? props.backgroundColor : colors.detach};
-
-  border-radius: 10px;
 `;
