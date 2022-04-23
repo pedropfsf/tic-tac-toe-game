@@ -1,6 +1,6 @@
 import { AreaScreen, Container } from './styles';
 
-import { StatusPlayer } from '../../components';
+import { StatusPlayer, Text } from '../../components';
 import { ImageIconLogo } from '../../assets';
 import Logo from '../../components/Logo';
 import colors from '../../styles/colors';
@@ -19,6 +19,7 @@ function Home() {
           typePlayer='Jogador X'
           color={colors.playerX}
         />
+        <Text color={colors.detach}>VS</Text>
         <StatusPlayer
           namePlayer='Tiago'
           quantityVitory={2}

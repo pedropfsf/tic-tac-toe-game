@@ -1,5 +1,4 @@
 import { 
-  Button, 
   AreaScreen, 
   Input, 
   Form 
@@ -7,7 +6,7 @@ import {
 
 import colors from '../../styles/colors';
 import convertOpacityColor from '../../utils/convertOpacityColor';
-import { Logo, Text } from '../../components';
+import { Logo, Text, Button } from '../../components';
 import { ImageIconLogo } from '../../assets';
 
 function SelectPlayers() {
@@ -44,7 +43,7 @@ function SelectPlayers() {
           placeholderTextColor={convertOpacityColor(colors.secundary)}
         />
         <Button>
-          <Text>Criar Partida</Text>
+          Criar Partida
         </Button>
       </Form>
     </AreaScreen>

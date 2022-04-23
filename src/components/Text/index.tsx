@@ -19,3 +19,7 @@ function Text({
 }
 
 export default Text;
+
+export {
+  SpanProps
+};

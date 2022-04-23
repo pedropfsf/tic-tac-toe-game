@@ -49,5 +49,5 @@ export const Box = styled.View<BoxProps>`
   border-right-width: ${props => props.line?.right ? `${props.line.right}px` : `0px`};
   border-color: ${props => props.color};
 
-  padding: 16px 0px;
+  padding: 8px 0px;
 `;

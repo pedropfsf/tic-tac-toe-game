@@ -46,20 +46,3 @@ export const Input = styled.TextInput<InputProps>`
   margin-top: ${props => props.space?.above ? props.space.above : 0}px;
   margin-bottom: ${props => props.space?.below ? props.space.below : 0}px;
 `;
-
-type ButtonProps = {
-  backgroundColor?: string;
-};
-
-export const Button = styled.View<ButtonProps>`
-  width: 100%;
-  height: 57px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: ${props => props.backgroundColor ? props.backgroundColor : colors.detach};
-
-  border-radius: 10px;
-`;
