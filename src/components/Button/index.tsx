@@ -12,6 +12,9 @@ type OptionsButton = {
   marginLeftButton?: ButtonAreaProps['marginLeft'];
   marginRightButton?: ButtonAreaProps['marginRight'];
   marginTotalText?: SpanProps['margin'];
+  widthButton?: ButtonAreaProps['width'];
+  heightButton?: ButtonAreaProps['height'];
+  flexButton?: ButtonAreaProps['flex'];
 };
 
 type ButtonProps = {
@@ -28,6 +31,9 @@ function Button({ children, optionsButton }: ButtonProps) {
       marginTop={optionsButton?.marginTopButton}
       marginLeft={optionsButton?.marginLeftButton}
       marginRight={optionsButton?.marginRightButton}
+      width={optionsButton?.widthButton}
+      height={optionsButton?.heightButton}
+      flex={optionsButton?.flexButton}
     >
       <Text
         fontSize={optionsButton?.sizeText}

@@ -8,11 +8,15 @@ export type ButtonAreaProps = {
   marginBottom?: string | number;
   marginLeft?: string | number;
   marginRight?: string | number;
+  width?: string;
+  height?: string;
+  flex?: number;
 };
 
 export const ButtonArea = styled.View<ButtonAreaProps>`
-  width: 100%;
-  height: 57px;
+  width: ${props => props.width && !props.flex ? props.width : '100%'};
+  height: ${props => props.height && !props.flex ? props.height : '57px'};
+  flex: ${props => props.flex ? props.flex : 'none'};
 
   display: flex;
   justify-content: center;

@@ -5,7 +5,7 @@ import colors from "../../styles/colors";
 
 export const AreaScreen = styled.View`
   flex: 1;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 
   background-color: ${colors.background};
@@ -24,10 +24,12 @@ export const PanelStatusPlayers = styled.View`
 `;
 
 export const PanelGame = styled.View`
-  flex: 1;
+  flex: 5;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  margin-top: 24px;
 `;
 
 export const ColumnGame = styled.View`
@@ -36,3 +38,11 @@ export const ColumnGame = styled.View`
   align-items: stretch;
 `;
 
+export const ContainerButtons = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 24px;
+`;

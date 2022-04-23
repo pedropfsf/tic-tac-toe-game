@@ -3,9 +3,10 @@ import {
   ColumnGame,
   PanelGame,
   PanelStatusPlayers,
+  ContainerButtons
 } from './styles';
 
-import { Text, BoxGame } from '../../components';
+import { Text, BoxGame, Button } from '../../components';
 import colors from '../../styles/colors';
 
 function GameScreen() {
@@ -85,6 +86,22 @@ function GameScreen() {
         
         </ColumnGame>
       </PanelGame>
+      <ContainerButtons>
+        <Button 
+          // optionsButton={{
+          //   flexButton: 2
+          // }}
+        >
+          Principal
+        </Button>
+        <Button
+          // optionsButton={{
+          //   flexButton: 2
+          // }}
+        >
+          Reiniciar
+        </Button>
+      </ContainerButtons>
     </AreaScreen>
   )
 }
