@@ -1,23 +1,38 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { 
+  AreaScreen, 
+  PanelStatusPlayers 
+} from './styles';
+
+import { Text } from '../../components';
+import colors from '../../styles/colors';
 
 function Game() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Game</Text>
-    </View>
+    <AreaScreen>
+      <PanelStatusPlayers>
+        <Text
+          fontSize="16"
+          color={colors.playerX}
+          margin="0 0 16px 0"
+        >
+          Matheus ( Jogador X ) - 2 Vitórias 
+        </Text>
+        <Text
+          fontSize="16"
+          color={colors.playerO}
+          margin="0 0 16px 0"
+        >
+          Pedro ( Jogador O ) - 0 Vitórias
+        </Text>
+      </PanelStatusPlayers>
+      <Text
+        color={colors.success}
+        margin="16px 0 0 0"
+      >
+        Matheus Ganhouu!!!
+      </Text>
+    </AreaScreen>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  }
-});
 
 export default Game;

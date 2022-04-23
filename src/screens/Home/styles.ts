@@ -4,7 +4,6 @@ import calculateDistanceBarHeight from "../../utils/calculateDistanceBarHeight";
 import calculateWidthPhone from '../../utils/calculateWidthPhone';
 import colors from "../../styles/colors";
 
-
 export const AreaScreen = styled.View`
   flex: 1;
   justify-content: space-between;
