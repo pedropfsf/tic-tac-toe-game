@@ -24,14 +24,59 @@ export function GameProvider({ children }: GameProviderProps) {
       type: 'x',
       victories: 0
     },
-    turn: '',
-    quantityVictories: ''
+    turn: 'x',
+    quantityVictories: '',
+    gameLogic: [
+      [ 
+        { 
+          id: '1',
+          value: 'x'
+        }, 
+        { 
+          id: '2',
+          value: ''
+        }, 
+        {
+          id: '3',
+          value: ''
+        } 
+      ],
+      [ 
+        {
+          id: '4',
+          value: ''
+        }, 
+        {
+          id: '5',
+          value: ''
+        },
+        {
+          id: '6',
+          value: ''
+        } 
+      ],
+      [ 
+        {
+          id: '7',
+          value: ''
+        }
+      , 
+        {
+          id: '8',
+          value: ''
+        },
+        {
+          id: '9',
+          value: ''
+        }
+      ]
+    ]
   };
 
   const game = useGame(defaultDataGame);
   
   return (
-    <GameContext.Provider value={{ ...game }}>
+    <GameContext.Provider value={game}>
       {children}
     </GameContext.Provider>
   )

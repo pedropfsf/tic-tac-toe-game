@@ -4,17 +4,24 @@ export type Player = {
   victories: number;
 }
 
+type GameLogic = {
+  id: string;
+  value: 'x' | 'o' | '';
+}
+
 export type Game = {
   playerX: Player;
   playerO: Player;
-  turn: Player['name'];
+  turn: 'x' | 'o' | '';
   quantityVictories: string;
+  gameLogic: GameLogic[][];
 }
 
 export type GameContextProps = {
   changePlayerO: (name: string) => void;
   changePlayerX: (name: string) => void;
   changeQuantityVictories: (value: string) => void;
+  playCurrentPlayer: (id: string) => void;
   state: Game;
 };
 

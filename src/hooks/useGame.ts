@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { Player, Game } from '../types/GameContextTypes';
+import { Game } from '../types/GameContextTypes';
 import { GameReducerAction, GameActions } from '../types/UseGameTypes';
 
 function useGame(defaultDataGame: Game) {
@@ -37,6 +37,21 @@ function useGame(defaultDataGame: Game) {
         });
 
         return newState;
+      
+      case GameActions.PLAY:
+        const id_element = payload;
+
+        for(let i = 0; i < state.gameLogic.length; i++) {
+          for(let j = 0; j < state.gameLogic[i].length; j++) {
+            const id_box = state.gameLogic[i][j].id;
+
+            state.gameLogic[i][j].value = id_element === id_box ? state.turn : '';
+          }
+        }
+
+        // newState = Object.assign({}, state);
+
+        return state;
 
       default:
         return newState
@@ -58,11 +73,17 @@ function useGame(defaultDataGame: Game) {
     payload: value 
   });
 
+  const playCurrentPlayer = (id: string) => dispatch({
+    type: GameActions.PLAY,
+    payload: id
+  });
+
   return {
     state,
     changePlayerO,
     changePlayerX,
-    changeQuantityVictories
+    changeQuantityVictories,
+    playCurrentPlayer
   }
 }
 

@@ -33,7 +33,7 @@ const configButtonRepeat = {
 };
 
 function GameScreen() {
-  const { state } = useContextGame();
+  const { state, playCurrentPlayer } = useContextGame();
 
   let navigation = useNavigation<GameScreenNavigationProp>();
   
@@ -68,51 +68,105 @@ function GameScreen() {
       <PanelGame>
         <ColumnGame>
           <BoxGame
+            value={state.gameLogic[0][0].value}
             borderBottom={2}
             borderRight={2}
+            onPress={() => {
+              const id = '1';
+
+              playCurrentPlayer(id);
+            }}
           />
           <BoxGame
+            value={state.gameLogic[1][0].value}
             borderBottom={2}
             borderTop={2}
             borderRight={2}
+            onPress={() => {
+              const id = '2';
+
+              playCurrentPlayer(id);
+            }}
           />
           <BoxGame
+            value={state.gameLogic[2][0].value}
             borderTop={2}
             borderRight={2}
+            onPress={() => {
+              const id = '3';
+
+              playCurrentPlayer(id);
+            }}
           />
         </ColumnGame>
         <ColumnGame>
           <BoxGame
+            value={state.gameLogic[0][1].value}
             borderBottom={2}
             borderLeft={2}
             borderRight={2}
+            onPress={() => {
+              const id = '4';
+
+              playCurrentPlayer(id);
+            }}
           />
           <BoxGame
+            value={state.gameLogic[1][1].value}
             borderBottom={2}
             borderTop={2}
             borderLeft={2}
             borderRight={2}
+            onPress={() => {
+              const id = '5';
+
+              playCurrentPlayer(id);
+            }}
           />
           <BoxGame
+            value={state.gameLogic[2][1].value}
             borderTop={2}
             borderLeft={2}
             borderRight={2}
+            onPress={() => {
+              const id = '6';
+
+              playCurrentPlayer(id);
+            }}
           />
 
         </ColumnGame>
         <ColumnGame>
           <BoxGame
+            value={state.gameLogic[0][2].value}
             borderBottom={2}
             borderLeft={2}
+            onPress={() => {
+              const id = '7';
+
+              playCurrentPlayer(id);
+            }}
           />
           <BoxGame
+            value={state.gameLogic[1][2].value}
             borderBottom={2}
             borderTop={2}
             borderLeft={2}
+            onPress={() => {
+              const id = '8';
+
+              playCurrentPlayer(id);
+            }}
           />
           <BoxGame
+            value={state.gameLogic[2][2].value}
             borderTop={2}
             borderLeft={2}
+            onPress={() => {
+              const id = '9';
+
+              playCurrentPlayer(id);
+            }}
           />
         
         </ColumnGame>

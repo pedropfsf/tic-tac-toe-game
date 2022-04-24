@@ -1,22 +1,53 @@
-import { AreaBoxGame, AreaBoxGameProps } from './styles';
 
-type BoxGameProps = AreaBoxGameProps & {};
+import { GestureResponderEvent } from 'react-native';
+import { ImageIconPlayerO, ImageIconPlayerX } from '../../assets';
+import { 
+  AreaBoxGame, 
+  AreaBoxGameProps, 
+  AreaBoxClickable 
+} from './styles';
+
+type BoxGameProps = AreaBoxGameProps & {
+  value: 'x' | 'o' | '';
+  onPress?: (event: GestureResponderEvent) => void;
+};
+
+function selectImage(value: BoxGameProps['value']) {
+  switch(value) {
+    case 'o':
+      return <ImageIconPlayerO/>
+    
+    case 'x':
+      return <ImageIconPlayerX/>
+    
+    default:
+      return null;
+  }
+}
 
 function BoxGame({ 
   borderTop, 
   borderBottom, 
   borderLeft, 
-  borderRight 
+  borderRight,
+  value,
+  onPress
 }: BoxGameProps) {
+
+
   return (
-    <AreaBoxGame
-      borderTop={borderTop}
-      borderBottom={borderBottom}
-      borderLeft={borderLeft}
-      borderRight={borderRight}
+    <AreaBoxClickable
+      onPress={onPress}
     >
-    
-    </AreaBoxGame>
+      <AreaBoxGame
+        borderTop={borderTop}
+        borderBottom={borderBottom}
+        borderLeft={borderLeft}
+        borderRight={borderRight}
+      >
+        { selectImage(value) }
+      </AreaBoxGame>
+    </AreaBoxClickable>
   )
 }
 
