@@ -8,11 +8,13 @@ export type Game = {
   playerX: Player;
   playerO: Player;
   turn: Player['name'];
+  quantityVictories: string;
 }
 
 export type GameContextProps = {
   changePlayerO: (name: string) => void;
   changePlayerX: (name: string) => void;
+  changeQuantityVictories: (value: string) => void;
   state: Game;
 };
 

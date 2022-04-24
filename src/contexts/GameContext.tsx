@@ -24,7 +24,8 @@ export function GameProvider({ children }: GameProviderProps) {
       type: 'x',
       victories: 0
     },
-    turn: ''
+    turn: '',
+    quantityVictories: ''
   };
 
   const game = useGame(defaultDataGame);
