@@ -12,6 +12,7 @@ import {
 
 import { Text, BoxGame, Button } from '../../components';
 import colors from '../../styles/colors';
+import { useContextGame } from '../../contexts/GameContext';
 
 type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
 
@@ -32,6 +33,8 @@ const configButtonRepeat = {
 };
 
 function GameScreen() {
+  const { state } = useContextGame();
+
   let navigation = useNavigation<GameScreenNavigationProp>();
   
   function goScreenHome() {
@@ -46,14 +49,14 @@ function GameScreen() {
           color={colors.playerX}
           margin="0 0 16px 0"
         >
-          Matheus ( Jogador X ) - 2 Vitórias 
+          { state.playerX.name } ( Jogador X ) - { String(state.playerX.victories) } Vitórias 
         </Text>
         <Text
           fontSize="16"
           color={colors.playerO}
           margin="0 0 16px 0"
         >
-          Pedro ( Jogador O ) - 0 Vitórias
+          { state.playerO.name } ( Jogador O ) - { String(state.playerO.victories) } Vitórias
         </Text>
       </PanelStatusPlayers>
       <Text
