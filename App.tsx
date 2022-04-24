@@ -21,7 +21,8 @@ export default function App() {
         <NavigationContainer>
           <NativeStack.Navigator
             screenOptions={{
-              headerShown: false
+              headerShown: false,
+              animation: 'fade'
             }}
           >
             <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>

@@ -23,11 +23,11 @@ function SelectPlayersScreen() {
 
   useEffect(() => {
     const showKeyboard = Keyboard.addListener('keyboardDidShow', () => {
-      setHiddenElements(false);
+      setHiddenElements(true);
     });
 
     const hiddenKeyboard = Keyboard.addListener('keyboardDidHide', () => {
-      setHiddenElements(true);
+      setHiddenElements(false);
     });
 
     return () => {
@@ -63,7 +63,7 @@ function SelectPlayersScreen() {
     <AreaScreen>
       {
         hiddenElements
-        &&
+        ||
         (
         <>
           <Logo
