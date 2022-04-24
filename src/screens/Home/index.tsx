@@ -2,8 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Home'>;
-
 import { 
   AreaScreen, 
   Container, 
@@ -17,12 +15,18 @@ import Logo from '../../components/Logo';
 import colors from '../../styles/colors';
 import { useContextGame } from '../../contexts/GameContext';
 
+type HomeScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Home'>;
+
 function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { state } = useContextGame();
 
-  function goSelectPlayers() {
+  function goScreenSelectPlayers() {
     navigation.navigate('SelectPlayers');
+  }
+
+  function goScreenGame() {
+      navigation.navigate('Game');
   }
 
   return (
@@ -59,11 +63,11 @@ function HomeScreen() {
               BorderButton: `2.5px solid ${colors.secundary}`,
               marginBottomButton: 16
             }}
-            onPress={goSelectPlayers}
+            onPress={goScreenSelectPlayers}
           >
             Voltar
           </Button>
-          <Button>
+          <Button onPress={goScreenGame}>
             Vamos começar
           </Button>
         </AreaButtons>

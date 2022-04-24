@@ -1,3 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
+
 import { 
   AreaScreen,
   ColumnGame,
@@ -8,6 +12,8 @@ import {
 
 import { Text, BoxGame, Button } from '../../components';
 import colors from '../../styles/colors';
+
+type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
 
 const configButtonMain = {
   flexButton: 2,
@@ -26,6 +32,12 @@ const configButtonRepeat = {
 };
 
 function GameScreen() {
+  let navigation = useNavigation<GameScreenNavigationProp>();
+  
+  function goScreenHome() {
+    navigation.navigate('Home');
+  }
+
   return (
     <AreaScreen>
       <PanelStatusPlayers>
@@ -103,7 +115,10 @@ function GameScreen() {
         </ColumnGame>
       </PanelGame>
       <ContainerButtons>
-        <Button optionsButton={configButtonMain}>
+        <Button 
+          optionsButton={configButtonMain}
+          onPress={goScreenHome}
+        >
           Voltar para tela principal
         </Button>
         <Button optionsButton={configButtonRepeat}>

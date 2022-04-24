@@ -49,7 +49,7 @@ function SelectPlayersScreen() {
     below: 16
   };
 
-  function goHome() {
+  function goScreenHome() {
     if(!state.playerO.name || !state.playerX.name) {
       Alert.alert('Preencha os campos', 'Campo do jogador X e jogador O estão vazios')
     } else {
@@ -103,7 +103,7 @@ function SelectPlayersScreen() {
           keyboardType={'numeric'}
         />
         <Button
-          onPress={goHome}
+          onPress={goScreenHome}
         >
           Criar Partida
         </Button>
