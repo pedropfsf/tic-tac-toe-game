@@ -103,14 +103,10 @@ function GameScreen() {
         </ColumnGame>
       </PanelGame>
       <ContainerButtons>
-        <Button 
-          optionsButton={configButtonMain}
-        >
+        <Button optionsButton={configButtonMain}>
           Voltar para tela principal
         </Button>
-        <Button
-          optionsButton={configButtonRepeat}
-        >
+        <Button optionsButton={configButtonRepeat}>
           Reiniciar
         </Button>
       </ContainerButtons>

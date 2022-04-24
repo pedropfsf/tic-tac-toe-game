@@ -1,3 +1,7 @@
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import { 
   AreaScreen, 
   Input, 
@@ -9,6 +13,9 @@ import convertOpacityColor from '../../utils/convertOpacityColor';
 import { Button, Logo, Text } from '../../components';
 import { ImageIconLogo } from '../../assets';
 import { useContextGame } from '../../contexts/GameContext';
+import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
+
+type SelectPlayersScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'SelectPlayers'>;
 
 function SelectPlayersScreen() {
   const { 
@@ -18,9 +25,21 @@ function SelectPlayersScreen() {
     changeQuantityVictories
   } = useContextGame();
 
+  const navigation = useNavigation<SelectPlayersScreenNavigationProp>();
+
   const spaceBelowConfig = {
     below: 16
   };
+
+  function goHome() {
+    if(!state.playerO.name || !state.playerX.name) {
+      Alert.alert('Preencha os campos', 'Campo do jogador X e jogador O estão vazios')
+    } else {
+      changeQuantityVictories('5');
+
+      navigation.navigate('Home');
+    }
+  }
 
   return (
     <AreaScreen>
@@ -53,11 +72,13 @@ function SelectPlayersScreen() {
           color={colors.secundary}
           value={state.quantityVictories}
           onChangeText={changeQuantityVictories}
-          placeholder="Quantidade de vitórias"
+          placeholder="Quantidade de vitórias, 5 por padrão"
           placeholderTextColor={convertOpacityColor(colors.secundary)}
           keyboardType={'numeric'}
         />
-        <Button>
+        <Button
+          onPress={goHome}
+        >
           Criar Partida
         </Button>
       </Form>

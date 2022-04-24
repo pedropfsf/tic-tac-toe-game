@@ -8,12 +8,8 @@ import HomeScreen from './src/screens/Home';
 import SelectPlayersScreen from './src/screens/SelectPlayers';
 import colors from './src/styles/colors';
 import { GameProvider } from './src/contexts/GameContext';
+import RootNativeStackParamsList from './src/types/RootNativeStackParamsList';
 
-type RootNativeStackParamsList = {
-  Game: undefined;
-  Home: undefined;
-  SelectPlayers: undefined;
-};
 
 const NativeStack = createNativeStackNavigator<RootNativeStackParamsList>();
 
@@ -27,6 +23,7 @@ export default function App() {
             screenOptions={{
               headerShown: false
             }}
+            initialRouteName="Game"
           >
             <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>
             <NativeStack.Screen name='Home' component={HomeScreen}/>

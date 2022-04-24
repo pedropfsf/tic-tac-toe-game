@@ -14,6 +14,7 @@ function useGame(defaultDataGame: Game) {
       case GameActions.ADD_PLAYER_O:
         newState = Object.assign({}, state, {
           playerO: {
+            ...state.playerO,
             name: payload
           }
         });
@@ -23,6 +24,7 @@ function useGame(defaultDataGame: Game) {
       case GameActions.ADD_PLAYER_X:
         newState = Object.assign({}, state, {
           playerX: {
+            ...state.playerX,
             name: payload
           }
         });
