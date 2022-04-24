@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import GameScreen from './src/screens/Game';
 import HomeScreen from './src/screens/Home';
 import SelectPlayersScreen from './src/screens/SelectPlayers';
+import colors from './src/styles/colors';
 
 type RootNativeStackParamsList = {
   Game: undefined;
@@ -18,7 +19,7 @@ const NativeStack = createNativeStackNavigator<RootNativeStackParamsList>();
 export default function App() {
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="light" backgroundColor={colors.statusBar}/>
       <NavigationContainer>
         <NativeStack.Navigator
           screenOptions={{

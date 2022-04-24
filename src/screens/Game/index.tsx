@@ -9,6 +9,22 @@ import {
 import { Text, BoxGame, Button } from '../../components';
 import colors from '../../styles/colors';
 
+const configButtonMain = {
+  flexButton: 2,
+  marginRightButton: 24,
+  sizeText: 14,
+  marginTotalText: '0px 8px',
+  colorButton: 'transparent',
+  BorderButton: `2.5px solid ${colors.secundary}`
+};
+
+const configButtonRepeat = {
+  flexButton: 2,
+  sizeText: 20,
+  colorButton: colors.secundary,
+  colorText: colors.background
+};
+
 function GameScreen() {
   return (
     <AreaScreen>
@@ -88,16 +104,12 @@ function GameScreen() {
       </PanelGame>
       <ContainerButtons>
         <Button 
-          // optionsButton={{
-          //   flexButton: 2
-          // }}
+          optionsButton={configButtonMain}
         >
-          Principal
+          Voltar para tela principal
         </Button>
         <Button
-          // optionsButton={{
-          //   flexButton: 2
-          // }}
+          optionsButton={configButtonRepeat}
         >
           Reiniciar
         </Button>

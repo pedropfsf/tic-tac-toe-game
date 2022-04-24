@@ -32,21 +32,27 @@ type OptionsButton = {
   flexButton?: ButtonAreaProps['flex'];
 };
 
-function createConfigButtonLength(prop: 'width' | 'height') {
-  return (props: ButtonAreaProps) => {
-    if (props[prop]) {
-      return props[prop];
-    } else if (props.flex) {
-      return 'auto'
-    } else {
-      return '100%'
-    }
+function configButtonWidth(props: ButtonAreaProps) {
+  if (props.width) {
+    return props.width;
+  } else if (props.flex) {
+    return 'auto'
   }
+  return '100%'
+}
+
+function configButtonHeight(props: ButtonAreaProps) {
+  if (props.height) {
+    return props.height;
+  } else if (props.flex) {
+    return 'auto'
+  }
+  return '57px'
 }
 
 const ButtonArea = styled.View<ButtonAreaProps>`
-  width: ${createConfigButtonLength('width')};
-  height: ${createConfigButtonLength('height')};
+  width: ${props => configButtonWidth(props)};
+  height: ${props => configButtonHeight(props)};
   flex: ${props => props.flex ? props.flex : 'none'};
 
   display: flex;
@@ -135,4 +141,15 @@ describe('Test Unit in button component', () => {
     // ASSERT
     expect(result).toMatchSnapshot();
   });
+
+  test('Apply default width, height, flex settings to the button', () => {
+    // SET
+    const componentButtonRendered = render(<Button>Clique me</Button>);
+
+    // ACT
+    const result = componentButtonRendered.toJSON();
+
+    // ASSERT
+    expect(result).toMatchSnapshot();
+  })
 });

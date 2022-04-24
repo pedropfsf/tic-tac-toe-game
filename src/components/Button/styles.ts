@@ -13,9 +13,27 @@ export type ButtonAreaProps = {
   flex?: number;
 };
 
+function configButtonWidth(props: ButtonAreaProps) {
+  if (props.width) {
+    return props.width;
+  } else if (props.flex) {
+    return 'auto'
+  }
+  return '100%'
+}
+
+function configButtonHeight(props: ButtonAreaProps) {
+  if (props.height) {
+    return props.height;
+  } else if (props.flex) {
+    return 'auto'
+  }
+  return '57px'
+}
+
 export const ButtonArea = styled.View<ButtonAreaProps>`
-  width: ${props => props.width && !props.flex ? props.width : '100%'};
-  height: ${props => props.height && !props.flex ? props.height : '57px'};
+  width: ${props => configButtonWidth(props)};
+  height: ${props => configButtonHeight(props)};
   flex: ${props => props.flex ? props.flex : 'none'};
 
   display: flex;

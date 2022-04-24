@@ -1,5 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test Unit in button component Apply default width, height, flex settings to the button 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#6246FF",
+        "borderColor": "black",
+        "borderRadius": 10,
+        "borderStyle": "solid",
+        "borderWidth": 0,
+        "display": "flex",
+        "flexBasis": "auto",
+        "flexGrow": 0,
+        "flexShrink": 0,
+        "height": 57,
+        "justifyContent": "center",
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#E8E5F9",
+          "fontSize": 24,
+          "fontWeight": "bold",
+          "marginBottom": 0,
+          "marginLeft": 24,
+          "marginRight": 24,
+          "marginTop": 0,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Clique me
+  </Text>
+</View>
+`;
+
 exports[`Test Unit in button component When applying configuration for width and height on button, remove flex configuration automatically 1`] = `
 <View
   height="70px"

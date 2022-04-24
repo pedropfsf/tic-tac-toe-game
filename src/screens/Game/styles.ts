@@ -42,7 +42,7 @@ export const ContainerButtons = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 
   padding: 24px;
 `;
