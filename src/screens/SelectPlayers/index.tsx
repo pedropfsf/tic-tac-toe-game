@@ -1,4 +1,5 @@
-import { Alert } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Alert, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -18,6 +19,23 @@ import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 type SelectPlayersScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'SelectPlayers'>;
 
 function SelectPlayersScreen() {
+  let [ hiddenElements, setHiddenElements ] = useState(false);
+
+  useEffect(() => {
+    const showKeyboard = Keyboard.addListener('keyboardDidShow', () => {
+      setHiddenElements(false);
+    });
+
+    const hiddenKeyboard = Keyboard.addListener('keyboardDidHide', () => {
+      setHiddenElements(true);
+    });
+
+    return () => {
+      showKeyboard.remove();
+      hiddenKeyboard.remove();
+    }
+  }, []);
+
   const { 
     state, 
     changePlayerO, 
@@ -43,13 +61,21 @@ function SelectPlayersScreen() {
 
   return (
     <AreaScreen>
-      <Logo
-        Src={ImageIconLogo}
-        alt="Logo do aplicativo"
-      />
-      <Text>
-        Digite o nome de cada jogador para criar a partida
-      </Text>
+      {
+        hiddenElements
+        &&
+        (
+        <>
+          <Logo
+            Src={ImageIconLogo}
+            alt="Logo do aplicativo"
+          />
+          <Text>
+            Digite o nome de cada jogador para criar a partida
+          </Text>
+        </>
+        )
+      }
       <Form>
         <Input
           space={spaceBelowConfig}
