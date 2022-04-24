@@ -7,6 +7,7 @@ import GameScreen from './src/screens/Game';
 import HomeScreen from './src/screens/Home';
 import SelectPlayersScreen from './src/screens/SelectPlayers';
 import colors from './src/styles/colors';
+import { GameProvider } from './src/contexts/GameContext';
 
 type RootNativeStackParamsList = {
   Game: undefined;
@@ -20,18 +21,20 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" backgroundColor={colors.statusBar}/>
-      <NavigationContainer>
-        <NativeStack.Navigator
-          screenOptions={{
-            headerShown: false
-          }}
-          initialRouteName="Game"
-        >
-          <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>
-          <NativeStack.Screen name='Home' component={HomeScreen}/>
-          <NativeStack.Screen name='Game' component={GameScreen}/>
-        </NativeStack.Navigator>
-      </NavigationContainer>
+      <GameProvider>
+        <NavigationContainer>
+          <NativeStack.Navigator
+            screenOptions={{
+              headerShown: false
+            }}
+            initialRouteName="Game"
+          >
+            <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>
+            <NativeStack.Screen name='Home' component={HomeScreen}/>
+            <NativeStack.Screen name='Game' component={GameScreen}/>
+          </NativeStack.Navigator>
+        </NavigationContainer>
+      </GameProvider>
     </>
   );
 }

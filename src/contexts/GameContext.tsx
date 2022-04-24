@@ -1,18 +1,19 @@
 import {
   createContext,
-  useContext,
-  useReducer
+  useContext
 } from 'react';
 
+import useGame from '../hooks/useGame';
 import { 
   GameContextProps, 
-  GameProviderProps 
+  GameProviderProps,
+  Game
 } from '../types/GameContextTypes';
 
 const GameContext = createContext({} as GameContextProps);
 
-function GameProvider({ children }: GameProviderProps) {
-  const defaultDataGame: GameContextProps = {
+export function GameProvider({ children }: GameProviderProps) {
+  const defaultDataGame: Game = {
     playerO: {
       name: '',
       type: 'o',
@@ -26,10 +27,15 @@ function GameProvider({ children }: GameProviderProps) {
     turn: ''
   };
 
+  const game = useGame(defaultDataGame);
   
   return (
-    <GameContext.Provider value={defaultDataGame}>
+    <GameContext.Provider value={{ ...game }}>
       {children}
     </GameContext.Provider>
   )
+}
+
+export function useContextGame() {
+  return useContext(GameContext);
 }

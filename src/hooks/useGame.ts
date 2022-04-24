@@ -1,23 +1,14 @@
 import { useReducer } from 'react';
 
-import { Player, GameContextProps } from '../types/GameContextTypes';
+import { Player, Game } from '../types/GameContextTypes';
+import { GameReducerAction, GameActions } from '../types/UseGameTypes';
 
-enum GameActions {
-  ADD_PLAYER_O = 'ADD_PLAYER_O',
-  ADD_PLAYER_X = 'ADD_PLAYER_X',
-}
-
-type GameReducerAction = {
-  type: GameActions,
-  payload: Player['name'];
-}
-
-function useGame(defaultDataGame: GameContextProps) {
+function useGame(defaultDataGame: Game) {
   let [ state, dispatch ] = useReducer(gameReducer, defaultDataGame);
 
-  function gameReducer(state: GameContextProps, action: GameReducerAction) {
+  function gameReducer(state: Game, action: GameReducerAction<Player['name']>) {
     const { type, payload } = action;
-    let newState: GameContextProps = defaultDataGame;
+    let newState: Game = defaultDataGame;
 
     switch (type) {
       case GameActions.ADD_PLAYER_O:

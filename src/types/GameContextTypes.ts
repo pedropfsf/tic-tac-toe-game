@@ -4,10 +4,16 @@ export type Player = {
   victories: number;
 }
 
-export type GameContextProps = {
+export type Game = {
   playerX: Player;
   playerO: Player;
   turn: Player['name'];
+}
+
+export type GameContextProps = {
+  changePlayerO: (name: string) => void;
+  changePlayerX: (name: string) => void;
+  state: Game;
 };
 
 export type GameProviderProps = {
