@@ -3,9 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { StatusBar } from 'expo-status-bar';
 
-import Game from './src/screens/Game';
-import Home from './src/screens/Home';
-import SelectPlayers from './src/screens/SelectPlayers';
+import GameScreen from './src/screens/Game';
+import HomeScreen from './src/screens/Home';
+import SelectPlayersScreen from './src/screens/SelectPlayers';
+import colors from './src/styles/colors';
 
 type RootNativeStackParamsList = {
   Game: undefined;
@@ -18,17 +19,17 @@ const NativeStack = createNativeStackNavigator<RootNativeStackParamsList>();
 export default function App() {
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="light" backgroundColor={colors.statusBar}/>
       <NavigationContainer>
         <NativeStack.Navigator
           screenOptions={{
             headerShown: false
           }}
-          initialRouteName="Home"
+          initialRouteName="Game"
         >
-          <NativeStack.Screen name='SelectPlayers' component={SelectPlayers}/>
-          <NativeStack.Screen name='Home' component={Home}/>
-          <NativeStack.Screen name='Game' component={Game}/>
+          <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>
+          <NativeStack.Screen name='Home' component={HomeScreen}/>
+          <NativeStack.Screen name='Game' component={GameScreen}/>
         </NativeStack.Navigator>
       </NavigationContainer>
     </>
