@@ -61,11 +61,14 @@ describe('Tests Unit gameWinningChecker', () => {
       ]
     ]
 
+    const PATTERN_PLAYER_X_WIN = 'xxx';
+    const PATTERN_PLAYER_O_WIN = 'ooo';
+
     for(let pattern of victoryPatterns) {
-      if(pattern.join('') === 'xxx') {
+      if(pattern.join('') === PATTERN_PLAYER_X_WIN) {
         return 'x';
         
-      } else if (pattern.join('') === 'ooo') {
+      } else if (pattern.join('') === PATTERN_PLAYER_O_WIN) {
         return 'o';
       
       } else {
@@ -76,7 +79,7 @@ describe('Tests Unit gameWinningChecker', () => {
     return 'tied-game';
   }
 
-  test('Capturing the right-facing diagonal line pattern of player X and O', () => {
+  test('Capture the right-facing diagonal line pattern of player X and O', () => {
     // SET
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: '' }, { value: '' } ],
@@ -101,7 +104,7 @@ describe('Tests Unit gameWinningChecker', () => {
     expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
   });
 
-  test('Capturing the left-facing diagonal line pattern of player X and O', () => {
+  test('Capture the left-facing diagonal line pattern of player X and O', () => {
     // SET
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: 'x' } ],
@@ -112,6 +115,156 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: '' }, { value: '' }, { value: 'o' } ],
       [ { value: '' }, { value: 'o' }, { value: '' } ],
       [ { value: 'o' }, { value: '' }, { value: '' } ],
+    ];
+
+    const EXPECT_RESULT_PLAYER_X = 'x';
+    const EXPECT_RESULT_PLAYER_O = 'o';
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X);
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
+  });
+
+  test('Capture line that hits the three boxes above', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+    ];
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+    ];
+
+    const EXPECT_RESULT_PLAYER_X = 'x';
+    const EXPECT_RESULT_PLAYER_O = 'o';
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X);
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
+  });
+
+  test('Capture line that hits the three middle boxes', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+    ];
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+    ];
+
+    const EXPECT_RESULT_PLAYER_X = 'x';
+    const EXPECT_RESULT_PLAYER_O = 'o';
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X);
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
+  });
+
+  test('Capture line that hits the three bottom boxes', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
+    ];
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
+    ];
+
+    const EXPECT_RESULT_PLAYER_X = 'x';
+    const EXPECT_RESULT_PLAYER_O = 'o';
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X);
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
+  });
+  
+  test('Capture line that hit the three boxes vertically on the left', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: 'x' }, { value: '' }, { value: '' } ],
+      [ { value: 'x' }, { value: '' }, { value: '' } ],
+      [ { value: 'x' }, { value: '' }, { value: '' } ],
+    ];
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: 'o' }, { value: '' }, { value: '' } ],
+      [ { value: 'o' }, { value: '' }, { value: '' } ],
+      [ { value: 'o' }, { value: '' }, { value: '' } ],
+    ];
+
+    const EXPECT_RESULT_PLAYER_X = 'x';
+    const EXPECT_RESULT_PLAYER_O = 'o';
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X);
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
+  });
+
+  test('Capture line that hit the three box vertically in the middle', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: '' }, { value: 'x' }, { value: '' } ],
+      [ { value: '' }, { value: 'x' }, { value: '' } ],
+      [ { value: '' }, { value: 'x' }, { value: '' } ],
+    ];
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: '' }, { value: 'o' }, { value: '' } ],
+      [ { value: '' }, { value: 'o' }, { value: '' } ],
+      [ { value: '' }, { value: 'o' }, { value: '' } ],
+    ];
+
+    const EXPECT_RESULT_PLAYER_X = 'x';
+    const EXPECT_RESULT_PLAYER_O = 'o';
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X);
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O);
+  });
+
+  test('Capture line that hit the three box vertically in the right', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: '' }, { value: '' }, { value: 'x' } ],
+      [ { value: '' }, { value: '' }, { value: 'x' } ],
+      [ { value: '' }, { value: '' }, { value: 'x' } ],
+    ];
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: '' }, { value: '' }, { value: 'o' } ],
+      [ { value: '' }, { value: '' }, { value: 'o' } ],
+      [ { value: '' }, { value: '' }, { value: 'o' } ],
     ];
 
     const EXPECT_RESULT_PLAYER_X = 'x';
