@@ -24,6 +24,7 @@ export default function App() {
               headerShown: false,
               animation: 'fade'
             }}
+            initialRouteName="Game"
           >
             <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>
             <NativeStack.Screen name='Home' component={HomeScreen}/>

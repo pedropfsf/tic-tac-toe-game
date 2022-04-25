@@ -49,9 +49,9 @@ function useGame(defaultDataGame: Game) {
           }
         }
 
-        // newState = Object.assign({}, state);
+        newState = Object.assign({}, state);
 
-        return state;
+        return newState;
 
       default:
         return newState

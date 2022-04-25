@@ -74,6 +74,7 @@ function GameScreen() {
             onPress={() => {
               const id = '1';
 
+              // console.log(id);
               playCurrentPlayer(id);
             }}
           />
@@ -83,9 +84,10 @@ function GameScreen() {
             borderTop={2}
             borderRight={2}
             onPress={() => {
-              const id = '2';
+              const id = '4';
 
               playCurrentPlayer(id);
+              
             }}
           />
           <BoxGame
@@ -93,7 +95,7 @@ function GameScreen() {
             borderTop={2}
             borderRight={2}
             onPress={() => {
-              const id = '3';
+              const id = '7';
 
               playCurrentPlayer(id);
             }}
@@ -106,9 +108,10 @@ function GameScreen() {
             borderLeft={2}
             borderRight={2}
             onPress={() => {
-              const id = '4';
+              const id = '2';
 
               playCurrentPlayer(id);
+              
             }}
           />
           <BoxGame
@@ -129,7 +132,7 @@ function GameScreen() {
             borderLeft={2}
             borderRight={2}
             onPress={() => {
-              const id = '6';
+              const id = '8';
 
               playCurrentPlayer(id);
             }}
@@ -142,9 +145,10 @@ function GameScreen() {
             borderBottom={2}
             borderLeft={2}
             onPress={() => {
-              const id = '7';
+              const id = '3';
 
               playCurrentPlayer(id);
+              
             }}
           />
           <BoxGame
@@ -153,9 +157,10 @@ function GameScreen() {
             borderTop={2}
             borderLeft={2}
             onPress={() => {
-              const id = '8';
+              const id = '6';
 
               playCurrentPlayer(id);
+              
             }}
           />
           <BoxGame
