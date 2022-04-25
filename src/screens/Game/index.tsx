@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 
-import { 
+import {
   AreaScreen,
   ColumnGame,
   PanelGame,
@@ -33,10 +33,48 @@ const configButtonRepeat = {
 };
 
 function GameScreen() {
-  const { state, playCurrentPlayer } = useContextGame();
+  const {
+    state,
+    playCurrentPlayer,
+    selectPlayerTurn
+  } = useContextGame();
+  const { current, namePlayer } = state.currentVictory;
+
+  function selectTypePlayerText() {
+    switch(state.turn) {
+      case 'o':
+        return 'Jogador O';
+      
+      case 'x':
+        return 'Jogador X';
+
+      default:
+        return 'Jogador O';
+    }
+  }
+
+  function changeColorTextTurn() {
+    return (
+      current 
+        ? 
+        colors.success 
+        : 
+        colors.secundary
+    )
+  }
+
+  function changeContentTextTurn() {
+    return (
+      !current
+        ?
+        `É a vez do ${selectPlayerTurn().name}, ${selectTypePlayerText()}`
+        :
+        `${namePlayer} Ganhouu!!!`
+    )
+  }
 
   let navigation = useNavigation<GameScreenNavigationProp>();
-  
+
   function goScreenHome() {
     navigation.navigate('Home');
   }
@@ -49,21 +87,22 @@ function GameScreen() {
           color={colors.playerX}
           margin="0 0 16px 0"
         >
-          { state.playerX.name } ( Jogador X ) - { String(state.playerX.victories) } Vitórias 
+          {state.playerX.name} ( Jogador X ) - {String(state.playerX.victories)} Vitórias
         </Text>
         <Text
           fontSize="16"
           color={colors.playerO}
           margin="0 0 16px 0"
         >
-          { state.playerO.name } ( Jogador O ) - { String(state.playerO.victories) } Vitórias
+          {state.playerO.name} ( Jogador O ) - {String(state.playerO.victories)} Vitórias
         </Text>
       </PanelStatusPlayers>
       <Text
-        color={colors.success}
+        color={changeColorTextTurn()}
         margin="16px 0 0 0"
+        fontSize={18}
       >
-        Matheus Ganhouu!!!
+        { changeContentTextTurn() }
       </Text>
       <PanelGame>
         <ColumnGame>
@@ -74,7 +113,6 @@ function GameScreen() {
             onPress={() => {
               const id = '1';
 
-              // console.log(id);
               playCurrentPlayer(id);
             }}
           />
@@ -87,7 +125,7 @@ function GameScreen() {
               const id = '4';
 
               playCurrentPlayer(id);
-              
+
             }}
           />
           <BoxGame
@@ -111,7 +149,7 @@ function GameScreen() {
               const id = '2';
 
               playCurrentPlayer(id);
-              
+
             }}
           />
           <BoxGame
@@ -148,7 +186,7 @@ function GameScreen() {
               const id = '3';
 
               playCurrentPlayer(id);
-              
+
             }}
           />
           <BoxGame
@@ -160,7 +198,7 @@ function GameScreen() {
               const id = '6';
 
               playCurrentPlayer(id);
-              
+
             }}
           />
           <BoxGame
@@ -173,11 +211,11 @@ function GameScreen() {
               playCurrentPlayer(id);
             }}
           />
-        
+
         </ColumnGame>
       </PanelGame>
       <ContainerButtons>
-        <Button 
+        <Button
           optionsButton={configButtonMain}
           onPress={goScreenHome}
         >

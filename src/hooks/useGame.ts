@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 
+import forMatrix from '../utils/forMatrix';
 import { Game } from '../types/GameContextTypes';
 import { GameReducerAction, GameActions } from '../types/UseGameTypes';
 
@@ -9,6 +10,16 @@ function useGame(defaultDataGame: Game) {
   function gameReducer(state: Game, action: GameReducerAction<string | number>) {
     const { type, payload } = action;
     let newState: Game = defaultDataGame;
+
+    
+
+    function toggleTurnPlayer() {
+      if(state.turn === 'x') {
+        state.turn = 'o';
+      } else {
+        state.turn = 'x';
+      }
+    }
 
     switch (type) {
       case GameActions.ADD_PLAYER_O:
@@ -41,13 +52,17 @@ function useGame(defaultDataGame: Game) {
       case GameActions.PLAY:
         const id_element = payload;
 
-        for(let i = 0; i < state.gameLogic.length; i++) {
-          for(let j = 0; j < state.gameLogic[i].length; j++) {
-            const id_box = state.gameLogic[i][j].id;
-
-            state.gameLogic[i][j].value = id_element === id_box ? state.turn : '';
-          }
-        }
+        forMatrix(box => {
+            const id_box = box.id;
+  
+            if(box.value === '') {
+              if(id_element === id_box) {
+                box.value = state.turn;
+  
+                toggleTurnPlayer();
+              }
+            }
+        }, state.gameLogic);
 
         newState = Object.assign({}, state);
 
@@ -78,12 +93,21 @@ function useGame(defaultDataGame: Game) {
     payload: id
   });
 
+  const selectPlayerTurn = () => {
+    if(state.turn === 'o') {
+      return state.playerO;
+    } 
+
+    return state.playerX;
+  };
+
   return {
     state,
     changePlayerO,
     changePlayerX,
     changeQuantityVictories,
-    playCurrentPlayer
+    playCurrentPlayer,
+    selectPlayerTurn
   }
 }
 

@@ -25,6 +25,10 @@ export function GameProvider({ children }: GameProviderProps) {
       victories: 0
     },
     turn: 'x',
+    currentVictory: {
+      current: false,
+      namePlayer: 'Pedro'
+    },
     quantityVictories: '5',
     gameLogic: [
       [ 
