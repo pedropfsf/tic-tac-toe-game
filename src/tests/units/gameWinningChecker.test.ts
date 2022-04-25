@@ -64,15 +64,16 @@ describe('Tests Unit gameWinningChecker', () => {
     for(let pattern of victoryPatterns) {
       if(pattern.join('') === 'xxx') {
         return 'x';
-
+        
       } else if (pattern.join('') === 'ooo') {
         return 'o';
       
       } else {
-        return '';
-      
+        continue;
       }
     }
+
+    return 'tied-game';
   }
 
   test('Capturing the right-facing diagonal line pattern of player X and O', () => {
@@ -101,8 +102,6 @@ describe('Tests Unit gameWinningChecker', () => {
   });
 
   test('Capturing the left-facing diagonal line pattern of player X and O', () => {
-    // Continue
-
     // SET
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: 'x' } ],
