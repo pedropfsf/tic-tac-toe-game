@@ -9,6 +9,34 @@ describe('Tests Unit gameWinningChecker', () => {
 
   type filledBoxMatrix = Matrix<filledBox>;
 
+  function selectTypeWinPattern(index: string) {
+    switch(index) {
+      case '0':
+        return 'right-diagonal';
+      
+      case '1':
+        return 'left-diagonal';
+
+      case '2':
+        return 'horizontal-top-line';
+      
+      case '3':
+        return 'horizontal-middle-line';
+      
+      case '4':
+        return 'horizontal-bottom-line';
+      
+      case '5':
+        return 'left-vertical-line';
+      
+      case '6':
+        return 'middle-vertical-line';
+
+      case '7':
+        return 'right-vertical-line';
+    }
+  }
+
   function gameWinningChecker(ticTocGameMatrix: filledBoxMatrix) {
     const victoryPatterns = [
       [ 
@@ -64,12 +92,20 @@ describe('Tests Unit gameWinningChecker', () => {
     const PATTERN_PLAYER_X_WIN = 'xxx';
     const PATTERN_PLAYER_O_WIN = 'ooo';
 
-    for(let pattern of victoryPatterns) {
-      if(pattern.join('') === PATTERN_PLAYER_X_WIN) {
-        return 'x';
+    for(let index in victoryPatterns) {
+      const patternTurn = victoryPatterns[index].join('');
+
+      if(patternTurn === PATTERN_PLAYER_X_WIN) {
+        return {
+          type: selectTypeWinPattern(index),
+          winner: 'x'
+        };
         
-      } else if (pattern.join('') === PATTERN_PLAYER_O_WIN) {
-        return 'o';
+      } else if (patternTurn === PATTERN_PLAYER_O_WIN) {
+        return {
+          type: selectTypeWinPattern(index),
+          winner: 'o'
+        };
       
       } else {
         continue;
@@ -92,8 +128,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: '' }, { value: '' }, { value: 'o' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'right-diagonal',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'right-diagonal',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -117,8 +160,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: 'o' }, { value: '' }, { value: '' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'left-diagonal',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'left-diagonal',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -142,8 +192,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: '' }, { value: '' }, { value: '' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'horizontal-top-line',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'horizontal-top-line',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -167,8 +224,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: '' }, { value: '' }, { value: '' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'horizontal-middle-line',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'horizontal-middle-line',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -192,8 +256,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'horizontal-bottom-line',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'horizontal-bottom-line',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -217,8 +288,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: 'o' }, { value: '' }, { value: '' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'left-vertical-line',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'left-vertical-line',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -242,8 +320,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: '' }, { value: 'o' }, { value: '' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'middle-vertical-line',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'middle-vertical-line',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
@@ -267,8 +352,15 @@ describe('Tests Unit gameWinningChecker', () => {
       [ { value: '' }, { value: '' }, { value: 'o' } ],
     ];
 
-    const EXPECT_RESULT_PLAYER_X = 'x';
-    const EXPECT_RESULT_PLAYER_O = 'o';
+    const EXPECT_RESULT_PLAYER_X = {
+      type: 'right-vertical-line',
+      winner: 'x'
+    };
+
+    const EXPECT_RESULT_PLAYER_O = {
+      type: 'right-vertical-line',
+      winner: 'o'
+    };
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
