@@ -101,6 +101,10 @@ function useGame(defaultDataGame: Game) {
     return state.playerX;
   };
 
+  // const TicTocGameMatrix = state.gameLogic;
+
+  
+
   return {
     state,
     changePlayerO,

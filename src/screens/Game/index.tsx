@@ -198,7 +198,6 @@ function GameScreen() {
               const id = '6';
 
               playCurrentPlayer(id);
-
             }}
           />
           <BoxGame
