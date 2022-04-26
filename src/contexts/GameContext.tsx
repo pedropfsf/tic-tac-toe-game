@@ -29,7 +29,7 @@ export function GameProvider({ children }: GameProviderProps) {
       status: 'progress',
       namePlayer: ''
     },
-    quantityVictories: '5',
+    quantityVictories: '',
     numberOfMovesGame: 0,
     typeLineWinGame: '',
     gameLogic: [

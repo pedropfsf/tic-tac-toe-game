@@ -39,17 +39,51 @@ function GameScreen() {
   const {
     state,
     playCurrentPlayer,
-    selectPlayerTurn
+    selectPlayerTurn,
+    restartGame,
+    resetToStartNewGame
   } = useContextGame();
 
+  function isPassedVictoriesPlayerX() {
+    const victoriesTotalGame = Number(state.quantityVictories);
+    return victoriesTotalGame === state.playerX.victories
+  }
+
+  function isPassedVictoriesPlayerO() {
+    const victoriesTotalGame = Number(state.quantityVictories);
+    return victoriesTotalGame === state.playerO.victories
+  }
+
+  function passedLimitVictories() {
+    const isPassedLimitVictoriesPlayerO = isPassedVictoriesPlayerO();
+    const isPassedLimitVictoriesPlayerX = isPassedVictoriesPlayerX();
+
+    return isPassedLimitVictoriesPlayerO || isPassedLimitVictoriesPlayerX;
+  }
+
+  function goSelectPlayers() {
+    navigation.navigate('SelectPlayers');
+  }
+
+  useEffect(() => {
+    if (passedLimitVictories()) {
+      restartGame();
+      resetToStartNewGame();
+      goSelectPlayers();
+    }
+
+  }, [ 
+    state.playerO.victories, 
+    state.playerX.victories 
+  ]);
+
   const { status, namePlayer } = state.currentVictory;
-  let numberOfMovesGame = state.numberOfMovesGame;
 
   function selectTypePlayerText() {
-    switch(state.turn) {
+    switch (state.turn) {
       case 'o':
         return 'Jogador O';
-      
+
       case 'x':
         return 'Jogador X';
 
@@ -61,15 +95,15 @@ function GameScreen() {
   function changeColorTextTurn() {
     return (
       status === 'winner'
-        ? 
-        colors.success 
-        : 
+        ?
+        colors.success
+        :
         colors.secundary
     )
   }
 
   function changeContentTextTurn() {
-    if(status === 'got-old') {
+    if (status === 'got-old') {
       return `Empatados!!!`;
     } else if (status === 'winner') {
       return `${namePlayer} Ganhouu!!!`;
@@ -84,6 +118,7 @@ function GameScreen() {
     navigation.navigate('Home');
   }
 
+  
   return (
     <AreaScreen>
       <PanelStatusPlayers>
@@ -107,7 +142,7 @@ function GameScreen() {
         margin="16px 0 0 0"
         fontSize={18}
       >
-        { changeContentTextTurn() }
+        {changeContentTextTurn()}
       </Text>
       <PanelGame>
         <ColumnGame>
@@ -118,7 +153,7 @@ function GameScreen() {
             onPress={() => {
               const id = '1';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -131,7 +166,7 @@ function GameScreen() {
             onPress={() => {
               const id = '4';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -143,7 +178,7 @@ function GameScreen() {
             onPress={() => {
               const id = '7';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -158,7 +193,7 @@ function GameScreen() {
             onPress={() => {
               const id = '2';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
 
@@ -173,7 +208,7 @@ function GameScreen() {
             onPress={() => {
               const id = '5';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -186,7 +221,7 @@ function GameScreen() {
             onPress={() => {
               const id = '8';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -201,7 +236,7 @@ function GameScreen() {
             onPress={() => {
               const id = '3';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
 
@@ -215,7 +250,7 @@ function GameScreen() {
             onPress={() => {
               const id = '6';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -227,7 +262,7 @@ function GameScreen() {
             onPress={() => {
               const id = '9';
 
-              if(state.currentVictory.status === 'progress') {
+              if (state.currentVictory.status === 'progress') {
                 playCurrentPlayer(id);
               }
             }}
@@ -242,7 +277,10 @@ function GameScreen() {
         >
           Voltar para tela principal
         </Button>
-        <Button optionsButton={configButtonRepeat}>
+        <Button
+          optionsButton={configButtonRepeat}
+          onPress={restartGame}
+        >
           Reiniciar
         </Button>
       </ContainerButtons>

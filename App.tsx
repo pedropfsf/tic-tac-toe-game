@@ -16,22 +16,23 @@ const NativeStack = createNativeStackNavigator<RootNativeStackParamsList>();
 export default function App() {
   return (
     <>
-      <StatusBar style="light" backgroundColor={colors.statusBar}/>
-      <GameProvider>
-        <NavigationContainer>
+      <StatusBar style="light" backgroundColor={colors.statusBar} />
+
+      <NavigationContainer>
+        <GameProvider>
           <NativeStack.Navigator
             screenOptions={{
               headerShown: false,
               animation: 'fade'
             }}
-            initialRouteName="Game"
+            // initialRouteName="Game"
           >
-            <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen}/>
-            <NativeStack.Screen name='Home' component={HomeScreen}/>
-            <NativeStack.Screen name='Game' component={GameScreen}/>
+            <NativeStack.Screen name='SelectPlayers' component={SelectPlayersScreen} />
+            <NativeStack.Screen name='Home' component={HomeScreen} />
+            <NativeStack.Screen name='Game' component={GameScreen} />
           </NativeStack.Navigator>
-        </NavigationContainer>
-      </GameProvider>
+        </GameProvider>
+      </NavigationContainer>
     </>
   );
 }

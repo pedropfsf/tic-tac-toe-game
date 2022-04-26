@@ -1,12 +1,18 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useReducer } from 'react';
 
 import forMatrix from '../utils/forMatrix';
+import RootNativeStackParamsList from '../types/RootNativeStackParamsList';
 import { Game } from '../types/GameContextTypes';
 import { GameReducerAction, GameActions } from '../types/UseGameTypes';
 import gameWinningChecker from '../utils/gameWinningChecker';
 
+type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
+
 function useGame(defaultDataGame: Game) {
   let [state, dispatch] = useReducer(gameReducer, defaultDataGame);
+  const navigation = useNavigation<GameScreenNavigationProp>();
 
   function gameReducer(state: Game, action: GameReducerAction<string | number>) {
     const { type, payload } = action;
@@ -63,7 +69,7 @@ function useGame(defaultDataGame: Game) {
           box.clicked = true;
           state.numberOfMovesGame++;
           const resultWin = gameWinningChecker(state.gameLogic);
-          const actionsGame = {
+          const actionsDefinesDestinyGame = {
             isPlayerXWinner: () => {
               if (resultWin === 'progress') {
                 return;
@@ -83,7 +89,7 @@ function useGame(defaultDataGame: Game) {
                 }
 
                 state.typeLineWinGame = resultWin.type;
-    
+                
                 return;
               }
             },
@@ -121,19 +127,54 @@ function useGame(defaultDataGame: Game) {
           }
           
           toggleTurnPlayer(state);
-          
+
           if (state.numberOfMovesGame === 9) {
-            actionsGame.isPlayerOWinner();
-            actionsGame.isPlayerXWinner();
-            actionsGame.isNotAnyWinner();
+            actionsDefinesDestinyGame.isPlayerOWinner();
+            actionsDefinesDestinyGame.isPlayerXWinner();
+            actionsDefinesDestinyGame.isNotAnyWinner();
 
             return;
           }
 
-          actionsGame.isPlayerOWinner();
-          actionsGame.isPlayerXWinner();
+          actionsDefinesDestinyGame.isPlayerOWinner();
+          actionsDefinesDestinyGame.isPlayerXWinner();
 
         }, state.gameLogic);
+
+        newState = Object.assign({}, state);
+
+        return newState;
+
+      case GameActions.RESTART_GAME:
+        forMatrix(box => {
+          box.value = '';
+          box.clicked = false;
+        }, state.gameLogic);
+
+        state.currentVictory = {
+          status: 'progress',
+          namePlayer: ''
+        }
+
+        state.numberOfMovesGame = 0;
+        state.typeLineWinGame = '';
+
+        newState = Object.assign({}, state);
+
+        return newState;
+
+      case GameActions.RESET_TO_START_NEW_GAME:
+        state.playerO = {
+          ...state.playerO,
+          victories: 0
+        };
+        
+        state.playerX = {
+          ...state.playerX,
+          victories: 0
+        };
+
+        state.quantityVictories = '';
 
         newState = Object.assign({}, state);
 
@@ -164,6 +205,14 @@ function useGame(defaultDataGame: Game) {
     payload: id
   });
 
+  const restartGame = () => dispatch({
+    type: GameActions.RESTART_GAME
+  });
+
+  const resetToStartNewGame = () => dispatch({
+    type: GameActions.RESET_TO_START_NEW_GAME
+  });
+
   const selectPlayerTurn = () => {
     if (state.turn === 'o') {
       return state.playerO;
@@ -178,7 +227,9 @@ function useGame(defaultDataGame: Game) {
     changePlayerX,
     changeQuantityVictories,
     playCurrentPlayer,
-    selectPlayerTurn
+    selectPlayerTurn,
+    restartGame,
+    resetToStartNewGame
   }
 }
 

@@ -39,6 +39,8 @@ export type GameContextProps = {
   changeQuantityVictories: (value: string) => void;
   playCurrentPlayer: (id: string) => void;
   selectPlayerTurn: () => Player;
+  restartGame: () => void;
+  resetToStartNewGame: () => void;
   state: Game;
 };
 

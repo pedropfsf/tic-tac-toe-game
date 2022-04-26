@@ -49,14 +49,24 @@ function SelectPlayersScreen() {
     below: 16
   };
 
-  function goScreenHome() {
+  function verifyFieldsPlayers() {
     if(!state.playerO.name || !state.playerX.name) {
       Alert.alert('Preencha os campos', 'Campo do jogador X e jogador O estão vazios')
-    } else {
-      changeQuantityVictories('5');
-
-      navigation.navigate('Home');
+  
+      return;
     }
+  }
+
+  function setQuantityVictoriesDefault() {
+    if (state.quantityVictories === ''){
+      changeQuantityVictories('5');
+    }
+  }
+  
+  function goScreenHome() {
+    verifyFieldsPlayers();
+    setQuantityVictoriesDefault();
+    navigation.navigate('Home');
   }
 
   return (
