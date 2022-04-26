@@ -26,52 +26,62 @@ export function GameProvider({ children }: GameProviderProps) {
     },
     turn: 'x',
     currentVictory: {
-      current: false,
+      status: 'progress',
       namePlayer: 'Pedro'
     },
     quantityVictories: '5',
+    numberOfMovesGame: 0,
     gameLogic: [
       [ 
         { 
           id: '1',
-          value: 'x'
+          value: '',
+          clicked: false
         }, 
         { 
           id: '2',
-          value: 'o'
+          value: '',
+          clicked: false
         }, 
         {
           id: '3',
-          value: ''
+          value: '',
+          clicked: false
         } 
       ],
       [ 
         {
           id: '4',
-          value: ''
+          value: '',
+          clicked: false
         }, 
         {
           id: '5',
-          value: ''
+          value: '',
+          clicked: false
         },
         {
           id: '6',
-          value: ''
+          value: '',
+          clicked: false
         } 
       ],
       [ 
         {
           id: '7',
-          value: ''
+          value: '',
+          clicked: false
         }
       , 
         {
           id: '8',
-          value: ''
+          value: '',
+          clicked: false
         },
         {
           id: '9',
-          value: ''
+          value: '',
+          clicked: false
         }
       ]
     ]

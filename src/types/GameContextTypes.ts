@@ -7,10 +7,11 @@ export type Player = {
 type GameLogic = {
   id: string;
   value: 'x' | 'o' | '';
+  clicked: boolean;
 }
 
 type CurrentVictory = {
-  current: boolean,
+  status: 'tield-game' | 'winner' | 'progress',
   namePlayer: string
 }
 
@@ -21,6 +22,7 @@ export type Game = {
   currentVictory: CurrentVictory;
   quantityVictories: string;
   gameLogic: GameLogic[][];
+  numberOfMovesGame: number;
 }
 
 export type GameContextProps = {

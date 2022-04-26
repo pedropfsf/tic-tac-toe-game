@@ -7,13 +7,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'o' }, { value: 'o' } ],
       [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
-      [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'o' }, { value: 'x' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'x' }, { value: 'o' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'x' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'x' }, { value: 'o' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -40,13 +40,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
-      [ { value: 'x' }, { value: 'o' }, { value: 'o' } ],
+      [ { value: 'x' }, { value: 'o' }, { value: 'o' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
       [ { value: 'x' }, { value: 'o' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: 'o' }, { value: 'x' }, { value: 'x' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -73,13 +73,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
       [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
-      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: 'o' }, { value: 'x' }, { value: 'x' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -106,13 +106,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
-      [ { value: 'o' }, { value: 'x' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'x' }, { value: 'o' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: 'o' }, { value: 'x' }, { value: 'x' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -139,13 +139,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
       [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
-      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -172,13 +172,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
       [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
-      [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'o' }, { value: 'x' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'o' }, { value: 'x' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'x' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -205,13 +205,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
       [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
-      [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'o' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
       [ { value: 'x' }, { value: 'o' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'x' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -238,13 +238,13 @@ describe('Tests Feature gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'x' }, { value: 'x' } ],
       [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
-      [ { value: 'x' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'o' }, { value: 'x' } ]
     ];
 
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'o' }, { value: 'o' } ],
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
-      [ { value: 'o' }, { value: 'x' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'x' }, { value: 'o' } ]
     ];
     
     const EXPECT_RESULT_PLAYER_X = {
@@ -256,6 +256,33 @@ describe('Tests Feature gameWinningChecker', () => {
       type: 'right-vertical-line',
       winner: 'o'
     };
+
+    // ACT
+    const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);
+    const resultPlayerO = gameWinningChecker(ticTocGameMatrixPlayerO);
+
+    // ASSERT
+    expect(resultPlayerX).toStrictEqual(EXPECT_RESULT_PLAYER_X)
+    expect(resultPlayerO).toStrictEqual(EXPECT_RESULT_PLAYER_O)
+  });
+
+  test('If there is no winner', () => {
+    // SET
+    const ticTocGameMatrixPlayerX: filledBoxMatrix = [
+      [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'o' } ]
+    ];
+
+    const ticTocGameMatrixPlayerO: filledBoxMatrix = [
+      [ { value: 'x' }, { value: 'x' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'o' } ]
+    ];
+    
+    const EXPECT_RESULT_PLAYER_X = 'tied-game';
+
+    const EXPECT_RESULT_PLAYER_O = 'tied-game';
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);

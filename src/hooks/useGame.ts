@@ -3,6 +3,7 @@ import { useReducer } from 'react';
 import forMatrix from '../utils/forMatrix';
 import { Game } from '../types/GameContextTypes';
 import { GameReducerAction, GameActions } from '../types/UseGameTypes';
+import gameWinningChecker from '../utils/gameWinningChecker';
 
 function useGame(defaultDataGame: Game) {
   let [ state, dispatch ] = useReducer(gameReducer, defaultDataGame);
@@ -54,14 +55,27 @@ function useGame(defaultDataGame: Game) {
 
         forMatrix(box => {
             const id_box = box.id;
+            const searchBox = id_element === id_box;
   
-            if(box.value === '') {
-              if(id_element === id_box) {
-                box.value = state.turn;
-  
-                toggleTurnPlayer();
-              }
+            if(box.clicked || !searchBox) {
+              return
             }
+
+            box.value = state.turn;
+            box.clicked = true;
+            state.numberOfMovesGame++;
+            const resultWin = gameWinningChecker(state.gameLogic);
+
+            // if(resultWin === 'tied-game') {
+            //   state.currentVictory = {
+            //     status: 'tield-game',
+            //     namePlayer: ''
+            //   }
+
+            //   return
+            // }
+            
+            toggleTurnPlayer();
         }, state.gameLogic);
 
         newState = Object.assign({}, state);

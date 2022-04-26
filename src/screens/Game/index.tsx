@@ -1,5 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+
+import gameWinningChecker from '../../utils/gameWinningChecker';
 import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 
 import {
@@ -38,7 +41,13 @@ function GameScreen() {
     playCurrentPlayer,
     selectPlayerTurn
   } = useContextGame();
-  const { current, namePlayer } = state.currentVictory;
+
+  const { status, namePlayer } = state.currentVictory;
+  let numberOfMovesGame = state.numberOfMovesGame;
+
+  // useEffect(() => {
+  //   console.log(numberOfMovesGame);
+  // }, [ numberOfMovesGame ])
 
   function selectTypePlayerText() {
     switch(state.turn) {
@@ -55,7 +64,7 @@ function GameScreen() {
 
   function changeColorTextTurn() {
     return (
-      current 
+      status === 'winner'
         ? 
         colors.success 
         : 
@@ -65,7 +74,7 @@ function GameScreen() {
 
   function changeContentTextTurn() {
     return (
-      !current
+      status !== 'winner'
         ?
         `É a vez do ${selectPlayerTurn().name}, ${selectTypePlayerText()}`
         :
@@ -125,7 +134,6 @@ function GameScreen() {
               const id = '4';
 
               playCurrentPlayer(id);
-
             }}
           />
           <BoxGame

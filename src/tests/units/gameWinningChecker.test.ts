@@ -120,12 +120,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: '' }, { value: '' } ],
       [ { value: '' }, { value: 'x' }, { value: '' } ],
-      [ { value: '' }, { value: '' }, { value: 'x' } ],
+      [ { value: '' }, { value: '' }, { value: 'x' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: '' }, { value: '' } ],
       [ { value: '' }, { value: 'o' }, { value: '' } ],
-      [ { value: '' }, { value: '' }, { value: 'o' } ],
+      [ { value: '' }, { value: '' }, { value: 'o' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -152,12 +152,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: 'x' } ],
       [ { value: '' }, { value: 'x' }, { value: '' } ],
-      [ { value: 'x' }, { value: '' }, { value: '' } ],
+      [ { value: 'x' }, { value: '' }, { value: '' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: 'o' } ],
       [ { value: '' }, { value: 'o' }, { value: '' } ],
-      [ { value: 'o' }, { value: '' }, { value: '' } ],
+      [ { value: 'o' }, { value: '' }, { value: '' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -184,12 +184,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
       [ { value: '' }, { value: '' }, { value: '' } ],
-      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
       [ { value: '' }, { value: '' }, { value: '' } ],
-      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -216,12 +216,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: '' } ],
       [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
-      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: '' } ],
       [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
-      [ { value: '' }, { value: '' }, { value: '' } ],
+      [ { value: '' }, { value: '' }, { value: '' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -248,12 +248,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: '' } ],
       [ { value: '' }, { value: '' }, { value: '' } ],
-      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ],
+      [ { value: 'x' }, { value: 'x' }, { value: 'x' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: '' } ],
       [ { value: '' }, { value: '' }, { value: '' } ],
-      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ],
+      [ { value: 'o' }, { value: 'o' }, { value: 'o' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -280,12 +280,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: 'x' }, { value: '' }, { value: '' } ],
       [ { value: 'x' }, { value: '' }, { value: '' } ],
-      [ { value: 'x' }, { value: '' }, { value: '' } ],
+      [ { value: 'x' }, { value: '' }, { value: '' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: 'o' }, { value: '' }, { value: '' } ],
       [ { value: 'o' }, { value: '' }, { value: '' } ],
-      [ { value: 'o' }, { value: '' }, { value: '' } ],
+      [ { value: 'o' }, { value: '' }, { value: '' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -312,12 +312,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: 'x' }, { value: '' } ],
       [ { value: '' }, { value: 'x' }, { value: '' } ],
-      [ { value: '' }, { value: 'x' }, { value: '' } ],
+      [ { value: '' }, { value: 'x' }, { value: '' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: '' }, { value: 'o' }, { value: '' } ],
       [ { value: '' }, { value: 'o' }, { value: '' } ],
-      [ { value: '' }, { value: 'o' }, { value: '' } ],
+      [ { value: '' }, { value: 'o' }, { value: '' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
@@ -344,12 +344,12 @@ describe('Tests Unit gameWinningChecker', () => {
     const ticTocGameMatrixPlayerX: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: 'x' } ],
       [ { value: '' }, { value: '' }, { value: 'x' } ],
-      [ { value: '' }, { value: '' }, { value: 'x' } ],
+      [ { value: '' }, { value: '' }, { value: 'x' } ]
     ];
     const ticTocGameMatrixPlayerO: filledBoxMatrix = [
       [ { value: '' }, { value: '' }, { value: 'o' } ],
       [ { value: '' }, { value: '' }, { value: 'o' } ],
-      [ { value: '' }, { value: '' }, { value: 'o' } ],
+      [ { value: '' }, { value: '' }, { value: 'o' } ]
     ];
 
     const EXPECT_RESULT_PLAYER_X = {
