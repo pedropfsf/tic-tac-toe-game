@@ -1,4 +1,9 @@
-import { ButtonArea, ButtonAreaProps } from "./styles";
+import { 
+  ButtonArea, 
+  ButtonAreaProps, 
+  ClickableArea,
+  ClickableAreaProps
+} from "./styles";
 
 import Text, { SpanProps } from "../Text";
 
@@ -7,26 +12,30 @@ type OptionsButton = {
   BorderButton?: ButtonAreaProps['border'];
   colorText?: SpanProps['color'];
   sizeText?: SpanProps['fontSize'];
-  marginTopButton?: ButtonAreaProps['marginTop'];
-  marginBottomButton?: ButtonAreaProps['marginBottom'];
-  marginLeftButton?: ButtonAreaProps['marginLeft'];
-  marginRightButton?: ButtonAreaProps['marginRight'];
+  marginTopButton?: ClickableAreaProps['marginTop'];
+  marginBottomButton?: ClickableAreaProps['marginBottom'];
+  marginLeftButton?: ClickableAreaProps['marginLeft'];
+  marginRightButton?: ClickableAreaProps['marginRight'];
   marginTotalText?: SpanProps['margin'];
-  widthButton?: ButtonAreaProps['width'];
-  heightButton?: ButtonAreaProps['height'];
-  flexButton?: ButtonAreaProps['flex'];
+  widthButton?: ClickableAreaProps['width'];
+  heightButton?: ClickableAreaProps['height'];
+  flexButton?: ClickableAreaProps['flex'];
 };
 
 type ButtonProps = {
   children: string | string[];
   optionsButton?: OptionsButton;
+  onPress?: () => void;
 }
 
-function Button({ children, optionsButton }: ButtonProps) {
+function Button({ 
+  children, 
+  optionsButton, 
+  onPress 
+}: ButtonProps) {
   return (
-    <ButtonArea
-      backgroundColor={optionsButton?.colorButton}
-      border={optionsButton?.BorderButton}
+    <ClickableArea
+      onPress={onPress}
       marginBottom={optionsButton?.marginBottomButton}
       marginTop={optionsButton?.marginTopButton}
       marginLeft={optionsButton?.marginLeftButton}
@@ -35,14 +44,19 @@ function Button({ children, optionsButton }: ButtonProps) {
       height={optionsButton?.heightButton}
       flex={optionsButton?.flexButton}
     >
-      <Text
-        fontSize={optionsButton?.sizeText}
-        color={optionsButton?.colorText}
-        margin={optionsButton?.marginTotalText}
+      <ButtonArea
+        backgroundColor={optionsButton?.colorButton}
+        border={optionsButton?.BorderButton}
       >
-        { children }
-      </Text>
-    </ButtonArea>
+        <Text
+          fontSize={optionsButton?.sizeText}
+          color={optionsButton?.colorText}
+          margin={optionsButton?.marginTotalText}
+        >
+          { children }
+        </Text>
+      </ButtonArea>
+    </ClickableArea>
   )
 }
 

@@ -33,5 +33,5 @@ export const AreaStatusPlayers = styled.View`
 export const AreaButtons = styled.View`
   width: 100%;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 `;  

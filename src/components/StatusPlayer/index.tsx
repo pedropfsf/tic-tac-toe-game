@@ -15,6 +15,16 @@ function StatusPlayer({
   quantityVitory, 
   color 
 }: StatusPlayerProps) {
+  function setLimitSizeText(name: string) {
+    return (
+      name.length > 7
+      ?
+      16
+      :
+      24
+    )
+  }
+
   return (
     <Area color={color}>
       <Column>
@@ -24,7 +34,7 @@ function StatusPlayer({
         >
           <Text 
             color={color}
-            fontSize={24}
+            fontSize={setLimitSizeText(namePlayer)}
           >
             { namePlayer }
           </Text>
