@@ -69,13 +69,13 @@ function GameScreen() {
   }
 
   function changeContentTextTurn() {
-    return (
-      status !== 'winner'
-        ?
-        `É a vez do ${selectPlayerTurn().name}, ${selectTypePlayerText()}`
-        :
-        `${namePlayer} Ganhouu!!!`
-    )
+    if(status === 'tield-game') {
+      return `Empatados!!!`;
+    } else if (status === 'winner') {
+      return `${namePlayer} Ganhouu!!!`;
+    } else {
+      return `É a vez do ${selectPlayerTurn().name}, ${selectTypePlayerText()}`;
+    }
   }
 
   let navigation = useNavigation<GameScreenNavigationProp>();

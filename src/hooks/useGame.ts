@@ -71,34 +71,39 @@ function useGame(defaultDataGame: Game) {
               return;
             }
 
-            if(resultWin.winner === 'o') {
+            if (resultWin.winner === 'o') {
               state.currentVictory = {
                 status: 'winner',
                 namePlayer: state.playerO.name
               }
 
-              let currentVictories = state.playerO.victories;
+              const newVictoriesPlayerO = state.playerO.victories += 1;
 
               state.playerO = {
                 ...state.playerO,
-                victories: currentVictories++
+                victories: newVictoriesPlayerO
               }
               
               return;
-            } else if (resultWin.winner === 'x') {
+            } 
+            
+            if (resultWin.winner === 'x') {
               state.currentVictory = {
                 status: 'winner',
                 namePlayer: state.playerX.name
               }
 
+              const newVictoriesPlayerX = state.playerX.victories += 1;
+
               state.playerX = {
                 ...state.playerX,
-                victories: state.playerX.victories = 1
+                victories: newVictoriesPlayerX 
               }
 
               return;
             }
 
+            console.log('tield-game');
             state.currentVictory = {
               status: 'tield-game',
               namePlayer: ''
