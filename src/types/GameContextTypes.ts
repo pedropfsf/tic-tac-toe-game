@@ -11,7 +11,7 @@ type GameLogic = {
 }
 
 type CurrentVictory = {
-  status: 'tield-game' | 'winner' | 'progress',
+  status: 'got-old' | 'winner' | 'progress',
   namePlayer: string
 }
 

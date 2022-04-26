@@ -6,16 +6,16 @@ import { GameReducerAction, GameActions } from '../types/UseGameTypes';
 import gameWinningChecker from '../utils/gameWinningChecker';
 
 function useGame(defaultDataGame: Game) {
-  let [ state, dispatch ] = useReducer(gameReducer, defaultDataGame);
+  let [state, dispatch] = useReducer(gameReducer, defaultDataGame);
 
   function gameReducer(state: Game, action: GameReducerAction<string | number>) {
     const { type, payload } = action;
     let newState: Game = defaultDataGame;
 
-    
+
 
     function toggleTurnPlayer() {
-      if(state.turn === 'x') {
+      if (state.turn === 'x') {
         state.turn = 'o';
       } else {
         state.turn = 'x';
@@ -42,74 +42,82 @@ function useGame(defaultDataGame: Game) {
         });
 
         return newState;
-      
+
       case GameActions.ADD_VICTORIES:
         newState = Object.assign({}, state, {
           quantityVictories: payload
         });
 
         return newState;
-      
+
       case GameActions.PLAY:
         const id_element = payload;
 
         forMatrix(box => {
-            const id_box = box.id;
-            const searchBox = id_element === id_box;
-  
-            if(box.clicked || !searchBox) {
-              return
-            }
+          const id_box = box.id;
+          const searchBox = id_element === id_box;
 
-            box.value = state.turn;
-            box.clicked = true;
-            state.numberOfMovesGame++;
-            const resultWin = gameWinningChecker(state.gameLogic);
+          if (box.clicked || !searchBox) {
+            return
+          }
 
-            toggleTurnPlayer();
-            if(resultWin === 'progress') {
-              return;
-            }
+          box.value = state.turn;
+          box.clicked = true;
+          state.numberOfMovesGame++;
+          const resultWin = gameWinningChecker(state.gameLogic);
 
-            if (resultWin.winner === 'o') {
-              state.currentVictory = {
-                status: 'winner',
-                namePlayer: state.playerO.name
-              }
-
-              const newVictoriesPlayerO = state.playerO.victories += 1;
-
-              state.playerO = {
-                ...state.playerO,
-                victories: newVictoriesPlayerO
-              }
-              
-              return;
-            } 
-            
-            if (resultWin.winner === 'x') {
-              state.currentVictory = {
-                status: 'winner',
-                namePlayer: state.playerX.name
-              }
-
-              const newVictoriesPlayerX = state.playerX.victories += 1;
-
-              state.playerX = {
-                ...state.playerX,
-                victories: newVictoriesPlayerX 
-              }
-
-              return;
-            }
-
-            console.log('tield-game');
+          if (state.numberOfMovesGame === 9) {
             state.currentVictory = {
-              status: 'tield-game',
+              status: 'got-old',
               namePlayer: ''
             }
-            
+
+            return 
+          }
+
+          toggleTurnPlayer();
+          
+          if (resultWin === 'progress') {
+            return;
+          }
+
+          if (resultWin.winner === 'o') {
+            state.currentVictory = {
+              status: 'winner',
+              namePlayer: state.playerO.name
+            }
+
+            const newVictoriesPlayerO = state.playerO.victories += 1;
+
+            state.playerO = {
+              ...state.playerO,
+              victories: newVictoriesPlayerO
+            }
+
+            return;
+          }
+
+          if (resultWin.winner === 'x') {
+            state.currentVictory = {
+              status: 'winner',
+              namePlayer: state.playerX.name
+            }
+
+            const newVictoriesPlayerX = state.playerX.victories += 1;
+
+            state.playerX = {
+              ...state.playerX,
+              victories: newVictoriesPlayerX
+            }
+
+            return;
+          }
         }, state.gameLogic);
+
+        // state.currentVictory = {
+        //   status: 'tield-game',
+        //   namePlayer: ''
+        // }
 
         newState = Object.assign({}, state);
 
@@ -120,19 +128,19 @@ function useGame(defaultDataGame: Game) {
     }
   }
 
-  const changePlayerO = (name: string) => dispatch({ 
-    type: GameActions.ADD_PLAYER_O, 
-    payload: name 
+  const changePlayerO = (name: string) => dispatch({
+    type: GameActions.ADD_PLAYER_O,
+    payload: name
   });
 
-  const changePlayerX = (name: string) => dispatch({ 
-    type: GameActions.ADD_PLAYER_X, 
-    payload: name 
+  const changePlayerX = (name: string) => dispatch({
+    type: GameActions.ADD_PLAYER_X,
+    payload: name
   });
-  
-  const changeQuantityVictories = (value: string) => dispatch({ 
-    type: GameActions.ADD_VICTORIES, 
-    payload: value 
+
+  const changeQuantityVictories = (value: string) => dispatch({
+    type: GameActions.ADD_VICTORIES,
+    payload: value
   });
 
   const playCurrentPlayer = (id: string) => dispatch({
@@ -141,16 +149,16 @@ function useGame(defaultDataGame: Game) {
   });
 
   const selectPlayerTurn = () => {
-    if(state.turn === 'o') {
+    if (state.turn === 'o') {
       return state.playerO;
-    } 
+    }
 
     return state.playerX;
   };
 
   // const TicTocGameMatrix = state.gameLogic;
 
-  
+
 
   return {
     state,

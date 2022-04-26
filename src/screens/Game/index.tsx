@@ -69,7 +69,7 @@ function GameScreen() {
   }
 
   function changeContentTextTurn() {
-    if(status === 'tield-game') {
+    if(status === 'got-old') {
       return `Empatados!!!`;
     } else if (status === 'winner') {
       return `${namePlayer} Ganhouu!!!`;
