@@ -15,6 +15,13 @@ type CurrentVictory = {
   namePlayer: string
 }
 
+type TypeLineWinGame = 
+  'right-diagonal' | 'left-diagonal' |
+  'horizontal-top-line' | 'horizontal-middle-line' |
+  'horizontal-bottom-line' | 'left-vertical-line' |
+  'middle-vertical-line' | 'right-vertical-line' | 
+  '';
+
 export type Game = {
   playerX: Player;
   playerO: Player;
@@ -23,6 +30,7 @@ export type Game = {
   quantityVictories: string;
   gameLogic: GameLogic[][];
   numberOfMovesGame: number;
+  typeLineWinGame: TypeLineWinGame;
 }
 
 export type GameContextProps = {

@@ -280,9 +280,9 @@ describe('Tests Feature gameWinningChecker', () => {
       [ { value: 'x' }, { value: 'x' }, { value: 'o' } ]
     ];
     
-    const EXPECT_RESULT_PLAYER_X = 'tied-game';
+    const EXPECT_RESULT_PLAYER_X = 'progress';
 
-    const EXPECT_RESULT_PLAYER_O = 'tied-game';
+    const EXPECT_RESULT_PLAYER_O = 'progress';
 
     // ACT
     const resultPlayerX = gameWinningChecker(ticTocGameMatrixPlayerX);

@@ -109,7 +109,7 @@ function gameWinningChecker(ticTocGameMatrix: filledBoxMatrix) {
     }
   }
 
-  return 'tied-game';
+  return 'progress';
 }
 
 export default gameWinningChecker;

@@ -112,7 +112,7 @@ describe('Tests Unit gameWinningChecker', () => {
       }
     }
 
-    return 'tied-game';
+    return 'progress';
   }
 
   test('Capture the right-facing diagonal line pattern of player X and O', () => {

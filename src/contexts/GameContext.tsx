@@ -27,10 +27,11 @@ export function GameProvider({ children }: GameProviderProps) {
     turn: 'x',
     currentVictory: {
       status: 'progress',
-      namePlayer: 'Pedro'
+      namePlayer: ''
     },
     quantityVictories: '5',
     numberOfMovesGame: 0,
+    typeLineWinGame: '',
     gameLogic: [
       [ 
         { 

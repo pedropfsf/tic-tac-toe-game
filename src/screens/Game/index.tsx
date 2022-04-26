@@ -45,10 +45,6 @@ function GameScreen() {
   const { status, namePlayer } = state.currentVictory;
   let numberOfMovesGame = state.numberOfMovesGame;
 
-  // useEffect(() => {
-  //   console.log(numberOfMovesGame);
-  // }, [ numberOfMovesGame ])
-
   function selectTypePlayerText() {
     switch(state.turn) {
       case 'o':
@@ -122,7 +118,9 @@ function GameScreen() {
             onPress={() => {
               const id = '1';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
           <BoxGame
@@ -133,7 +131,9 @@ function GameScreen() {
             onPress={() => {
               const id = '4';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
           <BoxGame
@@ -143,7 +143,9 @@ function GameScreen() {
             onPress={() => {
               const id = '7';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
         </ColumnGame>
@@ -156,7 +158,9 @@ function GameScreen() {
             onPress={() => {
               const id = '2';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
 
             }}
           />
@@ -169,7 +173,9 @@ function GameScreen() {
             onPress={() => {
               const id = '5';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
           <BoxGame
@@ -180,7 +186,9 @@ function GameScreen() {
             onPress={() => {
               const id = '8';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
 
@@ -193,7 +201,9 @@ function GameScreen() {
             onPress={() => {
               const id = '3';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
 
             }}
           />
@@ -205,7 +215,9 @@ function GameScreen() {
             onPress={() => {
               const id = '6';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
           <BoxGame
@@ -215,7 +227,9 @@ function GameScreen() {
             onPress={() => {
               const id = '9';
 
-              playCurrentPlayer(id);
+              if(state.currentVictory.status === 'progress') {
+                playCurrentPlayer(id);
+              }
             }}
           />
 

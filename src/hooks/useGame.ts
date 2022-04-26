@@ -66,16 +66,44 @@ function useGame(defaultDataGame: Game) {
             state.numberOfMovesGame++;
             const resultWin = gameWinningChecker(state.gameLogic);
 
-            // if(resultWin === 'tied-game') {
-            //   state.currentVictory = {
-            //     status: 'tield-game',
-            //     namePlayer: ''
-            //   }
-
-            //   return
-            // }
-            
             toggleTurnPlayer();
+            if(resultWin === 'progress') {
+              return;
+            }
+
+            if(resultWin.winner === 'o') {
+              state.currentVictory = {
+                status: 'winner',
+                namePlayer: state.playerO.name
+              }
+
+              let currentVictories = state.playerO.victories;
+
+              state.playerO = {
+                ...state.playerO,
+                victories: currentVictories++
+              }
+              
+              return;
+            } else if (resultWin.winner === 'x') {
+              state.currentVictory = {
+                status: 'winner',
+                namePlayer: state.playerX.name
+              }
+
+              state.playerX = {
+                ...state.playerX,
+                victories: state.playerX.victories = 1
+              }
+
+              return;
+            }
+
+            state.currentVictory = {
+              status: 'tield-game',
+              namePlayer: ''
+            }
+            
         }, state.gameLogic);
 
         newState = Object.assign({}, state);
