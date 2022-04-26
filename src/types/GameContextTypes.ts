@@ -15,7 +15,7 @@ type CurrentVictory = {
   namePlayer: string
 }
 
-type TypeLineWinGame = 
+export type TypeLineWinGame = 
   'right-diagonal' | 'left-diagonal' |
   'horizontal-top-line' | 'horizontal-middle-line' |
   'horizontal-bottom-line' | 'left-vertical-line' |

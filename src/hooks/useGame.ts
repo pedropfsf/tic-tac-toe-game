@@ -12,9 +12,7 @@ function useGame(defaultDataGame: Game) {
     const { type, payload } = action;
     let newState: Game = defaultDataGame;
 
-
-
-    function toggleTurnPlayer() {
+    function toggleTurnPlayer(state: Game) {
       if (state.turn === 'x') {
         state.turn = 'o';
       } else {
@@ -56,7 +54,7 @@ function useGame(defaultDataGame: Game) {
         forMatrix(box => {
           const id_box = box.id;
           const searchBox = id_element === id_box;
-
+          
           if (box.clicked || !searchBox) {
             return
           }
@@ -65,59 +63,77 @@ function useGame(defaultDataGame: Game) {
           box.clicked = true;
           state.numberOfMovesGame++;
           const resultWin = gameWinningChecker(state.gameLogic);
+          const actionsGame = {
+            isPlayerXWinner: () => {
+              if (resultWin === 'progress') {
+                return;
+              }
 
-          if (state.numberOfMovesGame === 9) {
-            state.currentVictory = {
-              status: 'got-old',
-              namePlayer: ''
+              if (resultWin.winner === 'o') {
+                state.currentVictory = {
+                  status: 'winner',
+                  namePlayer: state.playerO.name
+                }
+    
+                const newVictoriesPlayerO = state.playerO.victories += 1;
+    
+                state.playerO = {
+                  ...state.playerO,
+                  victories: newVictoriesPlayerO
+                }
+
+                state.typeLineWinGame = resultWin.type;
+    
+                return;
+              }
+            },
+            isPlayerOWinner: () => {
+              if (resultWin === 'progress') {
+                return;
+              }
+
+              if (resultWin.winner === 'x') {
+                state.currentVictory = {
+                  status: 'winner',
+                  namePlayer: state.playerX.name
+                }
+    
+                const newVictoriesPlayerX = state.playerX.victories += 1;
+    
+                state.playerX = {
+                  ...state.playerX,
+                  victories: newVictoriesPlayerX
+                }
+                
+                state.typeLineWinGame = resultWin.type;
+
+                return;
+              }
+            },
+            isNotAnyWinner: () => {
+              if (state.currentVictory.status !== 'winner') {              
+                state.currentVictory = {
+                  status: 'got-old',
+                  namePlayer: ''
+                }
+              }
             }
-
-            return 
           }
-
-          toggleTurnPlayer();
           
-          if (resultWin === 'progress') {
-            return;
-          }
-
-          if (resultWin.winner === 'o') {
-            state.currentVictory = {
-              status: 'winner',
-              namePlayer: state.playerO.name
-            }
-
-            const newVictoriesPlayerO = state.playerO.victories += 1;
-
-            state.playerO = {
-              ...state.playerO,
-              victories: newVictoriesPlayerO
-            }
+          toggleTurnPlayer(state);
+          
+          if (state.numberOfMovesGame === 9) {
+            actionsGame.isPlayerOWinner();
+            actionsGame.isPlayerXWinner();
+            actionsGame.isNotAnyWinner();
 
             return;
           }
 
-          if (resultWin.winner === 'x') {
-            state.currentVictory = {
-              status: 'winner',
-              namePlayer: state.playerX.name
-            }
+          actionsGame.isPlayerOWinner();
+          actionsGame.isPlayerXWinner();
 
-            const newVictoriesPlayerX = state.playerX.victories += 1;
-
-            state.playerX = {
-              ...state.playerX,
-              victories: newVictoriesPlayerX
-            }
-
-            return;
-          }
         }, state.gameLogic);
-
-        // state.currentVictory = {
-        //   status: 'tield-game',
-        //   namePlayer: ''
-        // }
 
         newState = Object.assign({}, state);
 
@@ -155,10 +171,6 @@ function useGame(defaultDataGame: Game) {
 
     return state.playerX;
   };
-
-  // const TicTocGameMatrix = state.gameLogic;
-
-
 
   return {
     state,

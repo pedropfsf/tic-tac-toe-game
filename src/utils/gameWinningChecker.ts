@@ -1,3 +1,5 @@
+import { TypeLineWinGame } from '../types/GameContextTypes';
+
 type Matrix<Value> = Value[][];
 
 type filledBox = {
@@ -6,7 +8,7 @@ type filledBox = {
 
 export type filledBoxMatrix = Matrix<filledBox>;
 
-function selectTypeWinPattern(index: string) {
+function selectTypeWinPattern(index: string): TypeLineWinGame {
   switch (index) {
     case '0':
       return 'right-diagonal';
@@ -31,6 +33,9 @@ function selectTypeWinPattern(index: string) {
 
     case '7':
       return 'right-vertical-line';
+    
+    default:
+      return '';
   }
 }
 
