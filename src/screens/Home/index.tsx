@@ -1,21 +1,27 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 
 import { 
+  AreaButtons,
   AreaScreen, 
-  Container, 
   AreaStatusPlayers, 
-  AreaButtons 
+  Container
 } from './styles';
 
-import { StatusPlayer, Text, Button } from '../../components';
 import { ImageIconLogo } from '../../assets';
+import { StatusPlayer, Text, Button } from '../../components';
 import Logo from '../../components/Logo';
-import colors from '../../styles/colors';
 import { useContextGame } from '../../contexts/GameContext';
+import colors from '../../styles/colors';
+import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Home'>;
+
+const optionsButtonBack = {
+  colorButton: 'transparent',
+  BorderButton: `2.5px solid ${colors.secundary}`,
+  marginBottomButton: 16
+};
 
 function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
@@ -43,12 +49,14 @@ function HomeScreen() {
             typePlayer='Jogador X'
             color={colors.playerX}
           />
+
           <Text 
             color={colors.detach}
             margin="8px"
           >
             VS
           </Text>
+          
           <StatusPlayer
             namePlayer={state.playerO.name}
             quantityVitory={state.playerO.victories}
@@ -58,15 +66,12 @@ function HomeScreen() {
         </AreaStatusPlayers>
         <AreaButtons>
           <Button 
-            optionsButton={{
-              colorButton: 'transparent',
-              BorderButton: `2.5px solid ${colors.secundary}`,
-              marginBottomButton: 16
-            }}
+            optionsButton={optionsButtonBack}
             onPress={goScreenSelectPlayers}
           >
             Voltar
           </Button>
+          
           <Button onPress={goScreenGame}>
             Vamos começar
           </Button>

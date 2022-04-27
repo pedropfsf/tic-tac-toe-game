@@ -8,6 +8,11 @@ type filledBox = {
 
 export type filledBoxMatrix = Matrix<filledBox>;
 
+type ReturnGameWinningChecker = "progress" | {
+  type: TypeLineWinGame;
+  winner: string;
+};
+
 function selectTypeWinPattern(index: string): TypeLineWinGame {
   switch (index) {
     case '0':
@@ -39,7 +44,7 @@ function selectTypeWinPattern(index: string): TypeLineWinGame {
   }
 }
 
-function gameWinningChecker(ticTocGameMatrix: filledBoxMatrix) {
+function gameWinningChecker(ticTocGameMatrix: filledBoxMatrix): ReturnGameWinningChecker {
   const victoryPatterns = [
     [
       ticTocGameMatrix[0][0].value,

@@ -1,21 +1,22 @@
+import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
-
-import gameWinningChecker from '../../utils/gameWinningChecker';
-import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 
 import {
   AreaScreen,
+  ContainerButtons,
   ColumnGame,
   PanelGame,
-  PanelStatusPlayers,
-  ContainerButtons
+  PanelStatusPlayers
 } from './styles';
 
-import { Text, BoxGame, Button } from '../../components';
-import colors from '../../styles/colors';
+import { BoxGame, Button, Text } from '../../components';
 import { useContextGame } from '../../contexts/GameContext';
+import colors from '../../styles/colors';
+import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
+import applyPlayCurrentPlayer from '../../utils/applyPlayCurrentPlayer';
+import { changeColorTextTurn,changeContentTextTurn } from '../../utils/changeTextTurn';
+import { verifyPassedLimitVictories } from '../../utils/verifyPassedVictoriesPlayers';
 
 type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
 
@@ -43,30 +44,11 @@ function GameScreen() {
     restartGame,
     resetToStartNewGame
   } = useContextGame();
-
-  function isPassedVictoriesPlayerX() {
-    const victoriesTotalGame = Number(state.quantityVictories);
-    return victoriesTotalGame === state.playerX.victories
-  }
-
-  function isPassedVictoriesPlayerO() {
-    const victoriesTotalGame = Number(state.quantityVictories);
-    return victoriesTotalGame === state.playerO.victories
-  }
-
-  function passedLimitVictories() {
-    const isPassedLimitVictoriesPlayerO = isPassedVictoriesPlayerO();
-    const isPassedLimitVictoriesPlayerX = isPassedVictoriesPlayerX();
-
-    return isPassedLimitVictoriesPlayerO || isPassedLimitVictoriesPlayerX;
-  }
-
-  function goSelectPlayers() {
-    navigation.navigate('SelectPlayers');
-  }
-
+  
+  let navigation = useNavigation<GameScreenNavigationProp>();
+  
   useEffect(() => {
-    if (passedLimitVictories()) {
+    if (verifyPassedLimitVictories(state)) {
       restartGame();
       resetToStartNewGame();
       goSelectPlayers();
@@ -76,49 +58,15 @@ function GameScreen() {
     state.playerO.victories, 
     state.playerX.victories 
   ]);
-
-  const { status, namePlayer } = state.currentVictory;
-
-  function selectTypePlayerText() {
-    switch (state.turn) {
-      case 'o':
-        return 'Jogador O';
-
-      case 'x':
-        return 'Jogador X';
-
-      default:
-        return 'Jogador O';
-    }
+  
+  function goSelectPlayers() {
+    navigation.navigate('SelectPlayers');
   }
-
-  function changeColorTextTurn() {
-    return (
-      status === 'winner'
-        ?
-        colors.success
-        :
-        colors.secundary
-    )
-  }
-
-  function changeContentTextTurn() {
-    if (status === 'got-old') {
-      return `Empatados!!!`;
-    } else if (status === 'winner') {
-      return `${namePlayer} Ganhouu!!!`;
-    } else {
-      return `É a vez do ${selectPlayerTurn().name}, ${selectTypePlayerText()}`;
-    }
-  }
-
-  let navigation = useNavigation<GameScreenNavigationProp>();
 
   function goScreenHome() {
     navigation.navigate('Home');
   }
 
-  
   return (
     <AreaScreen>
       <PanelStatusPlayers>
@@ -129,6 +77,7 @@ function GameScreen() {
         >
           {state.playerX.name} ( Jogador X ) - {String(state.playerX.victories)} Vitórias
         </Text>
+
         <Text
           fontSize="16"
           color={colors.playerO}
@@ -137,94 +86,88 @@ function GameScreen() {
           {state.playerO.name} ( Jogador O ) - {String(state.playerO.victories)} Vitórias
         </Text>
       </PanelStatusPlayers>
+
       <Text
-        color={changeColorTextTurn()}
+        color={changeColorTextTurn(state)}
         margin="16px 0 0 0"
         fontSize={18}
       >
-        {changeContentTextTurn()}
+        {changeContentTextTurn(state, selectPlayerTurn)}
       </Text>
+
       <PanelGame>
         <ColumnGame>
           <BoxGame
             value={state.gameLogic[0][0].value}
             borderBottom={2}
             borderRight={2}
-            onPress={() => {
-              const id = '1';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '1',
+              state,
+              playCurrentPlayer
+            })}
           />
+
           <BoxGame
             value={state.gameLogic[1][0].value}
             borderBottom={2}
             borderTop={2}
             borderRight={2}
-            onPress={() => {
-              const id = '4';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '4',
+              state,
+              playCurrentPlayer
+            })}
           />
+
           <BoxGame
             value={state.gameLogic[2][0].value}
             borderTop={2}
             borderRight={2}
-            onPress={() => {
-              const id = '7';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '7',
+              state,
+              playCurrentPlayer
+            })}
           />
         </ColumnGame>
+
         <ColumnGame>
           <BoxGame
             value={state.gameLogic[0][1].value}
             borderBottom={2}
             borderLeft={2}
             borderRight={2}
-            onPress={() => {
-              const id = '2';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '2',
+              state,
+              playCurrentPlayer
+            })}
           />
+
           <BoxGame
             value={state.gameLogic[1][1].value}
             borderBottom={2}
             borderTop={2}
             borderLeft={2}
             borderRight={2}
-            onPress={() => {
-              const id = '5';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '5',
+              state,
+              playCurrentPlayer
+            })}
           />
+
           <BoxGame
             value={state.gameLogic[2][1].value}
             borderTop={2}
             borderLeft={2}
             borderRight={2}
-            onPress={() => {
-              const id = '8';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '8',
+              state,
+              playCurrentPlayer
+            })}
           />
 
         </ColumnGame>
@@ -233,43 +176,39 @@ function GameScreen() {
             value={state.gameLogic[0][2].value}
             borderBottom={2}
             borderLeft={2}
-            onPress={() => {
-              const id = '3';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '3',
+              state,
+              playCurrentPlayer
+            })}
           />
+
           <BoxGame
             value={state.gameLogic[1][2].value}
             borderBottom={2}
             borderTop={2}
             borderLeft={2}
-            onPress={() => {
-              const id = '6';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '6',
+              state,
+              playCurrentPlayer
+            })}
           />
+
           <BoxGame
             value={state.gameLogic[2][2].value}
             borderTop={2}
             borderLeft={2}
-            onPress={() => {
-              const id = '9';
-
-              if (state.currentVictory.status === 'progress') {
-                playCurrentPlayer(id);
-              }
-            }}
+            onPress={applyPlayCurrentPlayer({
+              id: '9',
+              state,
+              playCurrentPlayer
+            })}
           />
 
         </ColumnGame>
       </PanelGame>
+
       <ContainerButtons>
         <Button
           optionsButton={configButtonMain}
@@ -277,6 +216,7 @@ function GameScreen() {
         >
           Voltar para tela principal
         </Button>
+
         <Button
           optionsButton={configButtonRepeat}
           onPress={restartGame}
