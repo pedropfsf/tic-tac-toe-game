@@ -15,12 +15,12 @@ const GameContext = createContext({} as GameContextProps);
 export function GameProvider({ children }: GameProviderProps) {
   const defaultDataGame: Game = {
     playerO: {
-      name: 'Pedro',
+      name: '',
       type: 'o',
       victories: 0
     },
     playerX: {
-      name: 'Jonas',
+      name: '',
       type: 'x',
       victories: 0
     },
