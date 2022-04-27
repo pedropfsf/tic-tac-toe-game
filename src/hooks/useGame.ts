@@ -1,18 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useReducer } from 'react';
 
-import forMatrix from '../utils/forMatrix';
-import RootNativeStackParamsList from '../types/RootNativeStackParamsList';
 import { Game } from '../types/GameContextTypes';
-import { GameReducerAction, GameActions } from '../types/UseGameTypes';
+import { GameActions, GameReducerAction } from '../types/UseGameTypes';
+import forMatrix from '../utils/forMatrix';
 import gameWinningChecker from '../utils/gameWinningChecker';
-
-type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
 
 function useGame(defaultDataGame: Game) {
   let [state, dispatch] = useReducer(gameReducer, defaultDataGame);
-  const navigation = useNavigation<GameScreenNavigationProp>();
 
   function gameReducer(state: Game, action: GameReducerAction<string | number>) {
     const { type, payload } = action;

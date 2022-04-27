@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Alert, Keyboard } from 'react-native';
+import { Keyboard } from 'react-native';
 import { useEffect, useState } from 'react';
 
 import { 
