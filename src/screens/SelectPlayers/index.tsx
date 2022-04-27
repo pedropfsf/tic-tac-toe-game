@@ -1,20 +1,23 @@
-import { useEffect, useState } from 'react';
-import { Alert, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Alert, Keyboard } from 'react-native';
+import { useEffect, useState } from 'react';
 
 import { 
   AreaScreen, 
-  Input, 
-  Form 
+  Form,
+  Input 
 } from './styles';
 
-import colors from '../../styles/colors';
-import convertOpacityColor from '../../utils/convertOpacityColor';
-import { Button, Logo, Text } from '../../components';
 import { ImageIconLogo } from '../../assets';
+import { Button, Logo, Text } from '../../components';
 import { useContextGame } from '../../contexts/GameContext';
+import colors from '../../styles/colors';
+import spaceBelowConfig from '../../settings/inputSpaceBelowConfig'
 import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
+import convertOpacityColor from '../../utils/convertOpacityColor';
+import verifyFieldsPlayers from '../../utils/verifyFieldsPlayers';
+import setQuantityVictoriesDefault from '../../utils/setQuantityVictoriesDefault';
 
 type SelectPlayersScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'SelectPlayers'>;
 
@@ -44,28 +47,10 @@ function SelectPlayersScreen() {
   } = useContextGame();
 
   const navigation = useNavigation<SelectPlayersScreenNavigationProp>();
-
-  const spaceBelowConfig = {
-    below: 16
-  };
-
-  function verifyFieldsPlayers() {
-    if(!state.playerO.name || !state.playerX.name) {
-      Alert.alert('Preencha os campos', 'Campo do jogador X e jogador O estão vazios')
-  
-      return;
-    }
-  }
-
-  function setQuantityVictoriesDefault() {
-    if (state.quantityVictories === ''){
-      changeQuantityVictories('5');
-    }
-  }
   
   function goScreenHome() {
-    verifyFieldsPlayers();
-    setQuantityVictoriesDefault();
+    verifyFieldsPlayers(state);
+    setQuantityVictoriesDefault(state, changeQuantityVictories);
     navigation.navigate('Home');
   }
 
@@ -112,9 +97,7 @@ function SelectPlayersScreen() {
           placeholderTextColor={convertOpacityColor(colors.secundary)}
           keyboardType={'numeric'}
         />
-        <Button
-          onPress={goScreenHome}
-        >
+        <Button onPress={goScreenHome}>
           Criar Partida
         </Button>
       </Form>
