@@ -43,16 +43,23 @@ function SelectPlayersScreen() {
     state, 
     changePlayerO, 
     changePlayerX,
-    changeQuantityVictories
+    changeQuantityVictories,
+    resetTotal
   } = useContextGame();
 
   const navigation = useNavigation<SelectPlayersScreenNavigationProp>();
   
   function goScreenHome() {
-    verifyFieldsPlayers(state);
-    setQuantityVictoriesDefault(state, changeQuantityVictories);
-    navigation.navigate('Home');
+    const isPassed = verifyFieldsPlayers(state);
+    if(isPassed) {
+      setQuantityVictoriesDefault(state, changeQuantityVictories);
+      navigation.navigate('Home');
+    }
   }
+
+  navigation.addListener('focus', () => {
+    resetTotal();
+  });
 
   return (
     <AreaScreen>

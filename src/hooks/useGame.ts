@@ -54,7 +54,7 @@ function useGame(defaultDataGame: Game) {
         forMatrix(box => {
           const id_box = box.id;
           const searchBox = id_element === id_box;
-          
+
           if (box.clicked || !searchBox) {
             return
           }
@@ -74,16 +74,16 @@ function useGame(defaultDataGame: Game) {
                   status: 'winner',
                   namePlayer: state.playerO.name
                 }
-    
+
                 const newVictoriesPlayerO = state.playerO.victories += 1;
-    
+
                 state.playerO = {
                   ...state.playerO,
                   victories: newVictoriesPlayerO
                 }
 
                 state.typeLineWinGame = resultWin.type;
-                
+
                 return;
               }
             },
@@ -97,21 +97,21 @@ function useGame(defaultDataGame: Game) {
                   status: 'winner',
                   namePlayer: state.playerX.name
                 }
-    
+
                 const newVictoriesPlayerX = state.playerX.victories += 1;
-    
+
                 state.playerX = {
                   ...state.playerX,
                   victories: newVictoriesPlayerX
                 }
-                
+
                 state.typeLineWinGame = resultWin.type;
 
                 return;
               }
             },
             isNotAnyWinner: () => {
-              if (state.currentVictory.status !== 'winner') {              
+              if (state.currentVictory.status !== 'winner') {
                 state.currentVictory = {
                   status: 'got-old',
                   namePlayer: ''
@@ -119,7 +119,7 @@ function useGame(defaultDataGame: Game) {
               }
             }
           }
-          
+
           toggleTurnPlayer(state);
 
           if (state.numberOfMovesGame === 9) {
@@ -162,13 +162,93 @@ function useGame(defaultDataGame: Game) {
           ...state.playerO,
           victories: 0
         };
-        
+
         state.playerX = {
           ...state.playerX,
           victories: 0
         };
 
         state.quantityVictories = '';
+
+        newState = Object.assign({}, state);
+
+        return newState;
+
+      case GameActions.RESET_TOTAL:
+        state = {
+          playerO: {
+            name: '',
+            type: 'o',
+            victories: 0
+          },
+          playerX: {
+            name: '',
+            type: 'x',
+            victories: 0
+          },
+          turn: 'x',
+          currentVictory: {
+            status: 'progress',
+            namePlayer: ''
+          },
+          quantityVictories: '',
+          numberOfMovesGame: 0,
+          typeLineWinGame: '',
+          gameLogic: [
+            [
+              {
+                id: '1',
+                value: '',
+                clicked: false
+              },
+              {
+                id: '2',
+                value: '',
+                clicked: false
+              },
+              {
+                id: '3',
+                value: '',
+                clicked: false
+              }
+            ],
+            [
+              {
+                id: '4',
+                value: '',
+                clicked: false
+              },
+              {
+                id: '5',
+                value: '',
+                clicked: false
+              },
+              {
+                id: '6',
+                value: '',
+                clicked: false
+              }
+            ],
+            [
+              {
+                id: '7',
+                value: '',
+                clicked: false
+              }
+              ,
+              {
+                id: '8',
+                value: '',
+                clicked: false
+              },
+              {
+                id: '9',
+                value: '',
+                clicked: false
+              }
+            ]
+          ]
+        };
 
         newState = Object.assign({}, state);
 
@@ -207,6 +287,10 @@ function useGame(defaultDataGame: Game) {
     type: GameActions.RESET_TO_START_NEW_GAME
   });
 
+  const resetTotal = () => dispatch({
+    type: GameActions.RESET_TOTAL
+  });
+
   const selectPlayerTurn = () => {
     if (state.turn === 'o') {
       return state.playerO;
@@ -223,7 +307,8 @@ function useGame(defaultDataGame: Game) {
     playCurrentPlayer,
     selectPlayerTurn,
     restartGame,
-    resetToStartNewGame
+    resetToStartNewGame,
+    resetTotal
   }
 }
 

@@ -69,7 +69,7 @@ function HomeScreen() {
             optionsButton={optionsButtonBack}
             onPress={goScreenSelectPlayers}
           >
-            Voltar
+            Sair da partida
           </Button>
           
           <Button onPress={goScreenGame}>
