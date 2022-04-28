@@ -44,7 +44,7 @@ function SelectPlayersScreen() {
     changePlayerO, 
     changePlayerX,
     changeQuantityVictories,
-    resetTotal
+    resetGoSelectPlayers
   } = useContextGame();
 
   const navigation = useNavigation<SelectPlayersScreenNavigationProp>();
@@ -58,7 +58,7 @@ function SelectPlayersScreen() {
   }
 
   navigation.addListener('focus', () => {
-    resetTotal();
+    resetGoSelectPlayers();
   });
 
   return (

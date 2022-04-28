@@ -11,6 +11,11 @@ function useGame(defaultDataGame: Game) {
   function gameReducer(state: Game, action: GameReducerAction<string | number>) {
     const { type, payload } = action;
     let newState: Game = defaultDataGame;
+    /**
+     * Sets a default value in case the control
+     * structure switches to the default option
+     * @param newState 
+     */
 
     function toggleTurnPlayer(state: Game) {
       if (state.turn === 'x') {
@@ -174,15 +179,15 @@ function useGame(defaultDataGame: Game) {
 
         return newState;
 
-      case GameActions.RESET_TOTAL:
-        state = {
+      case GameActions.RESET_GO_SELECT_PLAYERS:
+        newState = {
           playerO: {
-            name: '',
+            name: state.playerO.name,
             type: 'o',
             victories: 0
           },
           playerX: {
-            name: '',
+            name: state.playerX.name,
             type: 'x',
             victories: 0
           },
@@ -250,8 +255,6 @@ function useGame(defaultDataGame: Game) {
           ]
         };
 
-        newState = Object.assign({}, state);
-
         return newState;
 
       default:
@@ -287,8 +290,8 @@ function useGame(defaultDataGame: Game) {
     type: GameActions.RESET_TO_START_NEW_GAME
   });
 
-  const resetTotal = () => dispatch({
-    type: GameActions.RESET_TOTAL
+  const resetGoSelectPlayers = () => dispatch({
+    type: GameActions.RESET_GO_SELECT_PLAYERS
   });
 
   const selectPlayerTurn = () => {
@@ -308,7 +311,7 @@ function useGame(defaultDataGame: Game) {
     selectPlayerTurn,
     restartGame,
     resetToStartNewGame,
-    resetTotal
+    resetGoSelectPlayers
   }
 }
 

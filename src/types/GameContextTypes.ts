@@ -41,7 +41,7 @@ export type GameContextProps = {
   selectPlayerTurn: () => Player;
   restartGame: () => void;
   resetToStartNewGame: () => void;
-  resetTotal: () => void;
+  resetGoSelectPlayers: () => void;
   state: Game;
 };
 
