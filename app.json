@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tic-tac-toe-game",
+    "name": "Tic Tac Toe Game",
     "slug": "tic-tac-toe-game",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./public/icon.png",
         "backgroundColor": "#060029"
-      }
+      },
+      "package": "com.astronauto.tictactoegame"
     },
     "web": {
       "favicon": "./public/favicon.png"
