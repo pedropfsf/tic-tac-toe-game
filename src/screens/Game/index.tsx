@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import {
   AreaScreen,
@@ -15,7 +15,7 @@ import { useContextGame } from '../../contexts/GameContext';
 import colors from '../../styles/colors';
 import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 import applyPlayCurrentPlayer from '../../utils/applyPlayCurrentPlayer';
-import { changeColorTextTurn,changeContentTextTurn } from '../../utils/changeTextTurn';
+import { changeColorTextTurn, changeContentTextTurn } from '../../utils/changeTextTurn';
 import { verifyPassedLimitVictories } from '../../utils/verifyPassedVictoriesPlayers';
 
 type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
@@ -44,9 +44,9 @@ function GameScreen() {
     restartGame,
     resetToStartNewGame
   } = useContextGame();
-  
+
   let navigation = useNavigation<GameScreenNavigationProp>();
-  
+
   useEffect(() => {
     if (verifyPassedLimitVictories(state)) {
       restartGame();
@@ -54,11 +54,11 @@ function GameScreen() {
       goSelectPlayers();
     }
 
-  }, [ 
-    state.playerO.victories, 
-    state.playerX.victories 
+  }, [
+    state.playerO.victories,
+    state.playerX.victories
   ]);
-  
+
   function goSelectPlayers() {
     navigation.navigate('SelectPlayers');
   }
@@ -66,6 +66,143 @@ function GameScreen() {
   function goScreenHome() {
     navigation.navigate('Home');
   }
+
+  let status = state.currentVictory.status;
+  const gameLogic = state.gameLogic;
+  let gameLogicValueBox1 = gameLogic[0][0].value;
+  let gameLogicValueBox2 = gameLogic[1][0].value;
+  let gameLogicValueBox3 = gameLogic[2][0].value;
+  let gameLogicValueBox4 = gameLogic[0][1].value;
+  let gameLogicValueBox5 = gameLogic[1][1].value;
+  let gameLogicValueBox6 = gameLogic[2][1].value;
+  let gameLogicValueBox7 = gameLogic[0][2].value;
+  let gameLogicValueBox8 = gameLogic[1][2].value;
+  let gameLogicValueBox9 = gameLogic[2][2].value;
+
+  const memoizedBox1 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox1}
+      borderBottom={2}
+      borderRight={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '1',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox1, status]);
+
+  const memoizedBox2 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox2}
+      borderBottom={2}
+      borderTop={2}
+      borderRight={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '4',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox2, status]);
+
+  const memoizedBox3 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox3}
+      borderTop={2}
+      borderRight={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '7',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox3, status]);
+
+  const memoizedBox4 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox4}
+      borderBottom={2}
+      borderLeft={2}
+      borderRight={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '2',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox4, status]);
+
+  const memoizedBox5 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox5}
+      borderBottom={2}
+      borderTop={2}
+      borderLeft={2}
+      borderRight={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '5',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox5, status]);
+
+  const memoizedBox6 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox6}
+      borderTop={2}
+      borderLeft={2}
+      borderRight={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '8',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox6, status]);
+
+  const memoizedBox7 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox7}
+      borderBottom={2}
+      borderLeft={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '3',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox7, status]);
+
+  const memoizedBox8 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox8}
+      borderBottom={2}
+      borderTop={2}
+      borderLeft={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '6',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox8, status]);
+
+  const memoizedBox9 = useMemo(() => (
+    <BoxGame
+      value={gameLogicValueBox9}
+      borderTop={2}
+      borderLeft={2}
+      onPress={applyPlayCurrentPlayer({
+        id: '9',
+        status,
+        playCurrentPlayer
+      })}
+    />
+  ), [gameLogicValueBox9, status]);
+
+
 
   return (
     <AreaScreen>
@@ -97,115 +234,20 @@ function GameScreen() {
 
       <PanelGame>
         <ColumnGame>
-          <BoxGame
-            value={state.gameLogic[0][0].value}
-            borderBottom={2}
-            borderRight={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '1',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
-          <BoxGame
-            value={state.gameLogic[1][0].value}
-            borderBottom={2}
-            borderTop={2}
-            borderRight={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '4',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
-          <BoxGame
-            value={state.gameLogic[2][0].value}
-            borderTop={2}
-            borderRight={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '7',
-              state,
-              playCurrentPlayer
-            })}
-          />
+          {memoizedBox1}
+          {memoizedBox2}
+          {memoizedBox3}
         </ColumnGame>
 
         <ColumnGame>
-          <BoxGame
-            value={state.gameLogic[0][1].value}
-            borderBottom={2}
-            borderLeft={2}
-            borderRight={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '2',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
-          <BoxGame
-            value={state.gameLogic[1][1].value}
-            borderBottom={2}
-            borderTop={2}
-            borderLeft={2}
-            borderRight={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '5',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
-          <BoxGame
-            value={state.gameLogic[2][1].value}
-            borderTop={2}
-            borderLeft={2}
-            borderRight={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '8',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
+          {memoizedBox4}
+          {memoizedBox5}
+          {memoizedBox6}
         </ColumnGame>
         <ColumnGame>
-          <BoxGame
-            value={state.gameLogic[0][2].value}
-            borderBottom={2}
-            borderLeft={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '3',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
-          <BoxGame
-            value={state.gameLogic[1][2].value}
-            borderBottom={2}
-            borderTop={2}
-            borderLeft={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '6',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
-          <BoxGame
-            value={state.gameLogic[2][2].value}
-            borderTop={2}
-            borderLeft={2}
-            onPress={applyPlayCurrentPlayer({
-              id: '9',
-              state,
-              playCurrentPlayer
-            })}
-          />
-
+          {memoizedBox7}
+          {memoizedBox8}
+          {memoizedBox9}
         </ColumnGame>
       </PanelGame>
 

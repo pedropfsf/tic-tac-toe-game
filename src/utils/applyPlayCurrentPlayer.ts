@@ -2,17 +2,17 @@ import { Game, GameContextProps } from "../types/GameContextTypes";
 
 type ApplyPlayCurrentPlayer = {
   id: string;
-  state: Game;
+  status: Game['currentVictory']['status'];
   playCurrentPlayer: GameContextProps['playCurrentPlayer'];
 }
 
 function applyPlayCurrentPlayer({
   id,
-  state,
+  status,
   playCurrentPlayer
 }: ApplyPlayCurrentPlayer) {
   return () => {
-    if (state.currentVictory.status === 'progress') {
+    if (status === 'progress') {
       playCurrentPlayer(id);
     }
   };
