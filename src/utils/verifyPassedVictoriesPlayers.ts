@@ -14,5 +14,15 @@ export function verifyPassedLimitVictories(state: Game) {
   const isPassedLimitVictoriesPlayerO = verifyPassedVictoriesPlayerO(state);
   const isPassedLimitVictoriesPlayerX = verifyPassedVictoriesPlayerX(state);
 
-  return isPassedLimitVictoriesPlayerO || isPassedLimitVictoriesPlayerX;
+  if(isPassedLimitVictoriesPlayerO) {
+    return {
+      passed: isPassedLimitVictoriesPlayerO || isPassedLimitVictoriesPlayerX,
+      who: state.playerO.name
+    };
+  } else {
+    return {
+      passed: isPassedLimitVictoriesPlayerO || isPassedLimitVictoriesPlayerX,
+      who: state.playerX.name
+    };
+  }
 }

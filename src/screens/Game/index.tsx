@@ -17,6 +17,7 @@ import RootNativeStackParamsList from '../../types/RootNativeStackParamsList';
 import applyPlayCurrentPlayer from '../../utils/applyPlayCurrentPlayer';
 import { changeColorTextTurn, changeContentTextTurn } from '../../utils/changeTextTurn';
 import { verifyPassedLimitVictories } from '../../utils/verifyPassedVictoriesPlayers';
+import { Alert } from 'react-native';
 
 type GameScreenNavigationProp = NativeStackNavigationProp<RootNativeStackParamsList, 'Game'>;
 
@@ -48,10 +49,14 @@ function GameScreen() {
   let navigation = useNavigation<GameScreenNavigationProp>();
 
   useEffect(() => {
-    if (verifyPassedLimitVictories(state)) {
+    const { passed, who } = verifyPassedLimitVictories(state);
+
+    if (passed) {
       restartGame();
       resetToStartNewGame();
       goSelectPlayers();
+
+      Alert.alert('Atingido limite de vitórias', `O ganhador da partida foi o ${who}, parabéns!!! :)`)
     }
 
   }, [
@@ -202,8 +207,6 @@ function GameScreen() {
     />
   ), [gameLogicValueBox9, status]);
 
-
-
   return (
     <AreaScreen>
       <PanelStatusPlayers>
@@ -244,6 +247,7 @@ function GameScreen() {
           {memoizedBox5}
           {memoizedBox6}
         </ColumnGame>
+
         <ColumnGame>
           {memoizedBox7}
           {memoizedBox8}
