@@ -4,24 +4,43 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "test": "jest --watchAll",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.1",
+    "@types/styled-components-react-native": "^5.1.3",
     "expo": "~44.0.0",
+    "expo-constants": "~13.0.1",
     "expo-status-bar": "~1.2.0",
+    "jest": "^26.6.3",
+    "jest-expo": "^44.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.10.1",
+    "react-native-svg": "12.1.1",
+    "react-native-web": "0.17.1",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@testing-library/react-native": "^9.1.0",
+    "@types/jest": "^27.4.1",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
+    "@types/styled-components": "^5.1.25",
+    "react-native-svg-transformer": "^1.0.0",
+    "ts-node": "^10.7.0",
     "typescript": "~4.3.5"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   },
   "private": true
 }
